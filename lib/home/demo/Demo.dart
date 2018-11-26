@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:example01/common/CommontItem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -87,21 +88,12 @@ class DemoState extends State<Demo> {
   }
 
   get() async {
-//    var httpClient = new HttpClient();
-//    var uri = new Uri.http("www.baidu.com", "");
-//    var request = await httpClient.getUrl(uri);
-//    var response = await request.close();
-//    if (response.statusCode == HttpStatus.ok) {
-////      var responseBody = await response.transform(new StreamTransformer<>())
-//      var responseBody = await response.transform(new Stream.eventTransformed(source, mapSink));
-//      setState(() {
-//        _bodyStr = responseBody;
-//      });
-//    } else {
-//      setState(() {
-//        _bodyStr = "姓名：" + HttpStatus.ok.toString();
-//      });
-//    }
+    Dio dio = new Dio();
+    dio.get("http://www.baidu.com").then((obj) {
+      print(obj.data);
+    }, onError: (e) {
+      print(e);
+    });
   }
 
   @override
