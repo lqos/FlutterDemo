@@ -34,10 +34,6 @@ class Page1State extends State<Page1> {
   Widget build(BuildContext context) {
     TextStyle leftTextStyle = this.getLeftTextStyle();
     TextStyle rightTextStyle = this.getRightTextStyle();
-    final itemPressed = (String value) {
-      onclickItem(value);
-    };
-
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title),
@@ -65,6 +61,16 @@ class Page1State extends State<Page1> {
               new Container(
                 height: 1,
                 color: Color(0xFFeeeeee),
+              ),
+              new CommonItem(
+                onPressed: (value) {
+                  Navigator.of(context).pop();
+                },
+                leftIcon: new AssetImage("images/ic_mine_setting.png"),
+                leftText: "返回",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
               ),
               new CommonItem(
                 onPressed: (value) {

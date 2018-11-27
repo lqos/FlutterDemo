@@ -1,4 +1,5 @@
 import 'package:example01/common/CommontItem.dart';
+import 'package:example01/home/Page1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -73,17 +74,15 @@ class MyTabState extends State<MyTab> {
               rightTextStyle: rightTextStyle,
               rightText: "",
             ),
-            new CommonItem(
-              onPressed: itemPressed,
-              leftIcon: new AssetImage("images/ic_mine_setting.png"),
-              leftText: "设置",
-              leftTextStyle: leftTextStyle,
-              rightTextStyle: rightTextStyle,
-              rightText: "",
-            ),
+
             new CommonItem(
               onPressed: (String value) {
-                Navigator.of(context).pushNamed('Page1');
+//                Navigator.of(context).pushNamed('Page1');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => new Page1(title: "Navigator")),
+                );
               },
               leftIcon: new AssetImage("images/ic_mine_setting.png"),
               leftText: "Demo",
