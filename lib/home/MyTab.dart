@@ -1,4 +1,5 @@
 import 'package:example01/common/CommontItem.dart';
+import 'package:example01/home/MySetPage.dart';
 import 'package:example01/home/Page1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,14 +13,25 @@ class MyTabState extends State<MyTab> {
   String _bodyStr = '显示菜单的点击';
 
   TextStyle getLeftTextStyle() {
-    return new TextStyle(fontSize: 15, color: Color(0xFF333333));
+    return new TextStyle(fontSize: 18, color: Color(0xFF333333));
   }
 
   TextStyle getRightTextStyle() {
     return new TextStyle(fontSize: 13, color: Color(0xFF666666));
   }
 
-  void onclickItem(String value) {
+  void onclickItem(int ids, String value) {
+    if (ids == 1001) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => new Page1(title: "Navigator")),
+      );
+    } else if (ids == 1002) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => new MySetPage()),
+      );
+    }
     setState(() {
       _bodyStr = value;
     });
@@ -29,8 +41,8 @@ class MyTabState extends State<MyTab> {
   Widget build(BuildContext context) {
     TextStyle leftTextStyle = this.getLeftTextStyle();
     TextStyle rightTextStyle = this.getRightTextStyle();
-    final itemPressed = (String value) {
-      onclickItem(value);
+    final itemPressed = (int ids, String value) {
+      onclickItem(ids, value);
     };
 
     return new SingleChildScrollView(
@@ -74,16 +86,18 @@ class MyTabState extends State<MyTab> {
               rightTextStyle: rightTextStyle,
               rightText: "",
             ),
-
             new CommonItem(
-              onPressed: (String value) {
-//                Navigator.of(context).pushNamed('Page1');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => new Page1(title: "Navigator")),
-                );
-              },
+              ids: 1002,
+              onPressed: itemPressed,
+              leftIcon: new AssetImage("images/ic_mine_setting.png"),
+              leftText: "设置",
+              leftTextStyle: leftTextStyle,
+              rightTextStyle: rightTextStyle,
+              rightText: "",
+            ),
+            new CommonItem(
+              ids: 1001,
+              onPressed: itemPressed,
               leftIcon: new AssetImage("images/ic_mine_setting.png"),
               leftText: "Demo",
               leftTextStyle: leftTextStyle,

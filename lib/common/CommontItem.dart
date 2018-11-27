@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-typedef PopupMenuItemSelected<T> = void Function(T value);
+typedef PopupMenuItemSelected<T> = void Function(int ids, T value);
 
 // ignore: must_be_immutable
 class CommonItem extends StatelessWidget {
@@ -18,25 +18,42 @@ class CommonItem extends StatelessWidget {
   final TextStyle rightTextStyle;
   final TextStyle leftTextStyle;
 
+  final int ids;
+
+  final double topLineHeight;
+
   const CommonItem({
+    this.ids = -1,
     this.leftText,
     this.leftIcon,
     this.leftTextStyle,
     this.rightText,
     this.rightIcon,
     this.onPressed,
+    this.topLineHeight = 0,
     this.rightTextStyle,
   });
+
+  getTopLine() {
+    return new Container(
+      height: 1,
+      color: Color(0xFFeeeeee),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return new InkWell(
       onTap: () {
-        this.onPressed(leftText);
+        this.onPressed(ids, leftText);
       },
       child: new Container(
         child: new Column(
           children: <Widget>[
+            new Container(
+              height: topLineHeight,
+              color: Color(0xFFeeeeee),
+            ),
             new Container(
                 padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
                 child: new Row(

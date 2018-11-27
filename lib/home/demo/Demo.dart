@@ -21,7 +21,11 @@ class DemoState extends State<Demo> {
     return new TextStyle(fontSize: 13, color: Color(0xFF666666));
   }
 
-  void onclickItem(String value) {
+  void onclickItem(int ids, String value) {
+    change(ids.toString() + value);
+  }
+
+  void change(String value) {
     setState(() {
       _bodyStr = value;
     });
@@ -100,8 +104,8 @@ class DemoState extends State<Demo> {
   Widget build(BuildContext context) {
     TextStyle leftTextStyle = this.getLeftTextStyle();
     TextStyle rightTextStyle = this.getRightTextStyle();
-    final itemPressed = (String value) {
-      onclickItem(value);
+    final itemPressed = (int ids, String value) {
+      onclickItem(ids, value);
     };
 
     return new Scaffold(
@@ -131,7 +135,7 @@ class DemoState extends State<Demo> {
               ),
               maxLines: 1,
               maxLength: 10,
-              onChanged: itemPressed,
+              onChanged: change,
             ),
             new TextField(
               controller: phoneController,
@@ -142,7 +146,7 @@ class DemoState extends State<Demo> {
               ),
               maxLines: 1,
               maxLength: 11,
-              onChanged: itemPressed,
+              onChanged: change,
             ),
             new MaterialButton(
               onPressed: () {

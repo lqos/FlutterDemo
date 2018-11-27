@@ -63,7 +63,7 @@ class Page1State extends State<Page1> {
                 color: Color(0xFFeeeeee),
               ),
               new CommonItem(
-                onPressed: (value) {
+                onPressed: (ids, value) {
                   Navigator.of(context).pop();
                 },
                 leftIcon: new AssetImage("images/ic_mine_setting.png"),
@@ -73,7 +73,7 @@ class Page1State extends State<Page1> {
                 rightText: "",
               ),
               new CommonItem(
-                onPressed: (value) {
+                onPressed: (ids, value) {
                   Navigator.of(context).pushNamed("Demo");
                 },
                 leftIcon: new AssetImage("images/ic_mine_setting.png"),
@@ -83,7 +83,7 @@ class Page1State extends State<Page1> {
                 rightText: "",
               ),
               new CommonItem(
-                onPressed: (String value) {
+                onPressed: (int ids, String value) {
                   showBottomSheet<Null>(
                       context: context,
                       builder: (BuildContext context) {
