@@ -12,7 +12,6 @@ class Home extends StatefulWidget {
 class HomeState extends State<Home> {
   int _tabIndex = 0;
   var _bodys = [new MenusDemo(), new MenusDemo(), new MyTab()];
-  String title = "首页";
 
   getIcon(int index) {
     if (index == 0) {
@@ -46,12 +45,7 @@ class HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    title = getTabText(_tabIndex);
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(title),
-        centerTitle: true,
-      ),
       body: _bodys[_tabIndex],
       bottomNavigationBar: new BottomNavigationBar(
         items: <BottomNavigationBarItem>[

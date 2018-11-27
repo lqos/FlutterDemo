@@ -45,8 +45,12 @@ class MyTabState extends State<MyTab> {
       onclickItem(ids, value);
     };
 
-    return new SingleChildScrollView(
-      child: new Container(
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("我的"),
+        centerTitle: true,
+      ),
+      body: new SingleChildScrollView(
         child: new Column(
           children: <Widget>[
             new Text(_bodyStr),
