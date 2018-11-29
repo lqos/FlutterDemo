@@ -22,10 +22,13 @@ class CommonItem extends StatelessWidget {
 
   final double topLineHeight;
 
+  final Color bgColor;
+
   const CommonItem({
     this.ids = -1,
     this.leftText,
     this.leftIcon,
+    this.bgColor = Colors.white,
     this.leftTextStyle,
     this.rightText,
     this.rightIcon,
@@ -48,6 +51,7 @@ class CommonItem extends StatelessWidget {
         this.onPressed(ids, leftText);
       },
       child: new Container(
+        decoration: new BoxDecoration(color: bgColor),
         child: new Column(
           children: <Widget>[
             new Container(

@@ -47,6 +47,7 @@ flutter:
    - images/ic_mine_message.png
    - images/ic_share_qq.png
    - images/ic_share_wx.png
+   - images/ic_user_bg.webp
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

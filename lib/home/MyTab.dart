@@ -1,4 +1,5 @@
 import 'package:example01/common/CommontItem.dart';
+import 'package:example01/home/LoginPage.dart';
 import 'package:example01/home/MySetPage.dart';
 import 'package:example01/home/Page1.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,7 +11,7 @@ class MyTab extends StatefulWidget {
 }
 
 class MyTabState extends State<MyTab> {
-  String _bodyStr = '显示菜单的点击';
+  String _bodyStr = '显示2菜单的点击';
 
   TextStyle getLeftTextStyle() {
     return new TextStyle(fontSize: 18, color: Color(0xFF333333));
@@ -21,16 +22,28 @@ class MyTabState extends State<MyTab> {
   }
 
   void onclickItem(int ids, String value) {
-    if (ids == 1001) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => new Page1(title: "Navigator")),
-      );
-    } else if (ids == 1002) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => new MySetPage()),
-      );
+    switch (ids) {
+      case 1001:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => new Page1(title: "Navigator")),
+        );
+        break;
+      case 1002:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => new MySetPage()),
+        );
+        break;
+      case 1003:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => new LoginPage()),
+        );
+        break;
+      default:
+        break;
     }
     setState(() {
       _bodyStr = value;
@@ -44,21 +57,47 @@ class MyTabState extends State<MyTab> {
     final itemPressed = (int ids, String value) {
       onclickItem(ids, value);
     };
-
+    Size size = MediaQuery
+        .of(context)
+        .size;
+    final double devicePixelRatio = MediaQuery
+        .of(context)
+        .devicePixelRatio;
+    print("devicePixelRatio = " + devicePixelRatio.toString());
+    print(size.width * devicePixelRatio);
+    print(size.height * devicePixelRatio);
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("我的"),
-        centerTitle: true,
-      ),
       body: new SingleChildScrollView(
         child: new Column(
           children: <Widget>[
-            new Text(_bodyStr),
             new Container(
-              height: 1,
-              color: Color(0xFFeeeeee),
+              width: size.width,
+              height: size.width * 17 / 25,
+              decoration: new BoxDecoration(
+                image: DecorationImage(
+                    image: new AssetImage("images/ic_user_bg.webp")),
+              ),
+              child: new Center(
+                child: new InkWell(
+                    onTap: () {
+                      onclickItem(1003, "去登陆");
+                    },
+                    child: new Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new Icon(Icons.tag_faces),
+                        new Text(
+                          "点击请登录",
+                          maxLines: 1,
+                          style:
+                          new TextStyle(color: Colors.white, fontSize: 18),
+                        )
+                      ],
+                    )),
+              ),
             ),
             new CommonItem(
+              topLineHeight: 1,
               onPressed: itemPressed,
               leftIcon: new AssetImage("images/ic_account.png"),
               leftText: "我的钱包",

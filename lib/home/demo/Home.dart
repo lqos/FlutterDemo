@@ -1,5 +1,6 @@
 import 'package:example01/home/MenusDemo.dart';
 import 'package:example01/home/MyTab.dart';
+import 'package:example01/home/demo/MyHomePage.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -11,7 +12,7 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   int _tabIndex = 0;
-  var _bodys = [new MenusDemo(), new MenusDemo(), new MyTab()];
+  var _bodys = [new MyHomePage(), new MenusDemo(), new MyTab()];
 
   getIcon(int index) {
     if (index == 0) {
