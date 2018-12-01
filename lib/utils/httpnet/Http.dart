@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:example01/utils/PreferencesUtils.dart';
+import 'package:example01/common/config/config.dart';
 import 'package:example01/utils/httpnet/HttpContans.dart';
 
 class Http {
@@ -10,14 +10,6 @@ class Http {
 
   Http() {
     mHeaders = new Map<String, dynamic>();
-    PreferencesUtils.getString("token", "").then((String token) {
-      mHeaders["token"] = token;
-      options.headers = mHeaders;
-    });
-    PreferencesUtils.getString("userId", "").then((String userId) {
-      mHeaders["userId"] = userId;
-      options.headers = mHeaders;
-    });
     options = new Options();
     options.baseUrl = HttpContans.baseUrl;
     options.connectTimeout = 15000;
@@ -32,7 +24,7 @@ class Http {
     return _http;
   }
 
-  get<T>(String url, Map<String, Object> map) {
+  post(String url, Map<String, Object> map) async {
     String prams = "";
     String pin = "?";
     if (map != null)
@@ -40,24 +32,74 @@ class Http {
         prams = '$pin$key=$value';
         pin = '&';
       });
-    Dio dio = new Dio();
-    print('$url$prams');
-    return dio.get('$url$prams', options: options);
-  }
-
-  postJson(String url, data) {
-    Dio dio = new Dio();
-    print(url);
     Options options = this.options;
-    options.headers["content-type"] = "application/json;charset=UTF-8";
-    print(options.toString());
-    return dio.post(url, data: data, options: options);
+    options.method = "POST";
+    options.path = '$url$prams';
+    return await netFetch('$url$prams', options);
   }
 
-  text() => {};
+  get(String url, Map<String, Object> map) async {
+    String prams = "";
+    String pin = "?";
+    if (map != null)
+      map.forEach((key, value) {
+        prams = '$pin$key=$value';
+        pin = '&';
+      });
+    Options options = this.options;
+    options.method = "GET";
+    options.path = '$url$prams';
+    return await netFetch('$url$prams', options);
+  }
+
+  postJson(String url, data) async {
+    Options options = this.options;
+    options.method = "POST";
+    options.data = data;
+    options.path = url;
+    options.headers["content-type"] = "application/json;charset=UTF-8";
+    return await netFetch(url, options);
+  }
 
   void addHeader(String key, dynamic value) {
     mHeaders[key] = value;
     options.headers = mHeaders;
+  }
+
+  netFetch(String url, Options options) async {
+    var mUrl = options.baseUrl + options.path;
+    if (Config.DEBUG) {
+      print(
+          '********************************************************************');
+      print('请求方式:' + options.method + '\n请求地址:$mUrl');
+      print('请求参数:' + options.data.toString());
+      var headers = options.headers.toString();
+      print('请求headers:$headers');
+      print(
+          '********************************************************************');
+    }
+    Response response;
+    try {
+      Dio dio = new Dio();
+      response = await dio.post(url, options: options);
+
+      if (Config.DEBUG) {
+        print(
+            '********************************************************************');
+        print('请求方式:' + options.method + '\n请求地址:$mUrl');
+        print('请求结果CODE:' + response.statusCode.toString());
+        print('请求结果:' + response.data.toString());
+        print(
+            '********************************************************************');
+      }
+      return response;
+    } on DioError catch (e) {
+      response = e.response;
+      if (Config.DEBUG) {
+        print('请求异常: ' + e.toString());
+        print('请求异常url: ' + mUrl);
+      }
+      return response;
+    }
   }
 }
