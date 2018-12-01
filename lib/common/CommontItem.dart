@@ -100,7 +100,6 @@ class TextWithLeftIcon extends StatelessWidget {
     } else {
       lefticon = new Text("");
     }
-    // TODO: implement build
     return new Container(
         child: new Row(
       children: <Widget>[

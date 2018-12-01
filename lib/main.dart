@@ -1,5 +1,6 @@
+import 'package:example01/WelcomePage.dart';
 import 'package:example01/bean/User.dart';
-import 'package:example01/home/demo/Home.dart';
+import 'package:example01/page/demo/Home.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/state/GSYStyle.dart';
 import 'package:flutter/material.dart';
@@ -46,18 +47,20 @@ class FlutterReduxApp extends StatelessWidget {
 //            locale: store.state.locale,
 //            supportedLocales: [store.state.locale],
             theme: store.state.themeData,
-            home: new GSYLocalizations(
-              child: new Home(),
-            ),
+//            home: new GSYLocalizations(
+//              child: new HomePage(),
+//            ),
             routes: {
-//              WelcomePage.sName: (context) {
-//                store.state.platformLocale = Localizations.localeOf(context);
-//                return WelcomePage();
-//              },
-//              "HomePage": (context) {
-//                ///通过 Localizations.override 包裹一层，
-//                return ;
-//              },
+              WelcomePage.sName: (context) {
+                store.state.platformLocale = Localizations.localeOf(context);
+                return WelcomePage();
+              },
+              "HomePage": (context) {
+                ///通过 Localizations.override 包裹一层，
+                return new GSYLocalizations(
+                  child: new HomePage(),
+                );
+              },
 //              LoginPage.sName: (context) {
 //                return new GSYLocalizations(
 //                  child: new LoginPage(),

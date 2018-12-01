@@ -1,8 +1,8 @@
 import 'package:example01/bean/User.dart';
 import 'package:example01/common/CommontItem.dart';
-import 'package:example01/home/LoginPage.dart';
-import 'package:example01/home/MySetPage.dart';
-import 'package:example01/home/Page1.dart';
+import 'package:example01/page/home/LoginPage.dart';
+import 'package:example01/page/home/MySetPage.dart';
+import 'package:example01/page/home/Page1.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
