@@ -4,6 +4,7 @@ import 'package:example01/common/config/Nav.dart';
 import 'package:example01/page/home/LoginPage.dart';
 import 'package:example01/page/home/Page1.dart';
 import 'package:example01/state/GSYState.dart';
+import 'package:example01/utils/AppUtils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -35,10 +36,15 @@ class MyTabState extends State<MyTab> {
         Nav.goAppSet(context);
         break;
       case 1003:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => new LoginPage()),
-        );
+        if (!AppUtils.checkLoin(context)) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => new LoginPage()),
+          );
+        } else {
+          print("处于登录状态");
+        }
+
         break;
       default:
         break;
@@ -85,7 +91,7 @@ class MyTabState extends State<MyTab> {
                       child: new Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          user != null && user.id > 0
+                          AppUtils.checkLoin(context)
                               ? new Image.network(
                             user.portrait,
                             width: 50,
@@ -93,11 +99,9 @@ class MyTabState extends State<MyTab> {
                           )
                               : new Icon(Icons.tag_faces),
                           new Text(
-                            user == null
-                                ? "user == null"
-                                : (user.nickName == null
-                                ? "点击请登录"
-                                : user.nickName),
+                            AppUtils.checkLoin(context)
+                                ? user.nickName
+                                : "点击请登录",
 //                            user.nickName ?? "点击请登录",
                             maxLines: 1,
                             style: new TextStyle(

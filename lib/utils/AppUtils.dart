@@ -1,5 +1,17 @@
+import 'package:example01/state/GSYState.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
+
 class AppUtils {
-  static bool checkLoin() {
-    return false;
+  ///检查是否处于登录状态
+  static bool checkLoin(context) {
+    Store<GSYState> store = StoreProvider.of(context);
+    if (store.state.userInfo == null) {
+      return false;
+    }
+    if (store.state.userInfo.id < 0) {
+      return false;
+    }
+    return true;
   }
 }
