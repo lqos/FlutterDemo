@@ -29,7 +29,7 @@ class Http {
     String pin = "?";
     if (map != null)
       map.forEach((key, value) {
-        prams = '$pin$key=$value';
+        prams = '$prams$pin$key=$value';
         pin = '&';
       });
     Options options = this.options;
@@ -43,7 +43,7 @@ class Http {
     String pin = "?";
     if (map != null)
       map.forEach((key, value) {
-        prams = '$pin$key=$value';
+        prams = '$prams$pin$key=$value';
         pin = '&';
       });
     Options options = this.options;
@@ -74,6 +74,7 @@ class Http {
   }
 
   netFetch(String url, Options options) async {
+    var startTime = new DateTime.now().millisecond;
     var mUrl = options.baseUrl + options.path;
     if (Config.DEBUG) {
       print(
@@ -91,9 +92,10 @@ class Http {
       response = await dio.request(url, options: options);
 
       if (Config.DEBUG) {
+        var time = (new DateTime.now().millisecond - startTime).toString();
         print(
             '********************************************************************');
-        print('请求方式:' + options.method + '\n请求地址:$mUrl');
+        print('请求方式:' + options.method + '\n请求地址:$mUrl($time)');
         print('请求结果CODE:' + response.statusCode.toString());
         print('请求结果:' + response.data.toString());
         print(
@@ -103,8 +105,9 @@ class Http {
     } on DioError catch (e) {
       response = e.response;
       if (Config.DEBUG) {
+        var time = (new DateTime.now().millisecond - startTime).toString();
         print('请求异常: ' + e.toString());
-        print('请求异常url: ' + mUrl);
+        print('请求异常url:$mUrl($time)');
       }
       return response;
     }
