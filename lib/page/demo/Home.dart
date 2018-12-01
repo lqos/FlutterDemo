@@ -4,6 +4,8 @@ import 'package:example01/page/home/MyTab.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  static const sName = "HomePage";
+
   @override
   State<StatefulWidget> createState() {
     return new HomePageState();

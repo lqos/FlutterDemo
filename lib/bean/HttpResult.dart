@@ -1,4 +1,4 @@
-import 'package:example01/bean/BaseBean.dart';
+
 
 class HttpResult<T> {
   T data;
@@ -7,13 +7,12 @@ class HttpResult<T> {
 
   HttpResult({this.code, this.message, this.data});
 
-  static formJson<T>(Map<String, Object> map, BaseBean bean) {
+  static formJson<T>(Map<String, Object> map) {
     if (map == null) {
       return null;
     }
     return new HttpResult(
       code: map["code"],
-      data: bean.formJson(map["data"]),
       message: map["message"],
     );
   }

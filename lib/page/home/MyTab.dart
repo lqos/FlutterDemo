@@ -68,7 +68,7 @@ class MyTabState extends State<MyTab> {
     print(size.width * devicePixelRatio);
     print(size.height * devicePixelRatio);
     return new StoreBuilder<GSYState>(builder: (context, store) {
-      User user = User.getInstance();
+      User user = store.state.userInfo;
       return new Scaffold(
         body: new SingleChildScrollView(
           child: new Column(

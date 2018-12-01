@@ -47,15 +47,11 @@ class FlutterReduxApp extends StatelessWidget {
 //            locale: store.state.locale,
 //            supportedLocales: [store.state.locale],
             theme: store.state.themeData,
-//            home: new GSYLocalizations(
-//              child: new HomePage(),
-//            ),
+            home: new GSYLocalizations(
+              child: new WelcomePage(),
+            ),
             routes: {
-              WelcomePage.sName: (context) {
-                store.state.platformLocale = Localizations.localeOf(context);
-                return WelcomePage();
-              },
-              "HomePage": (context) {
+              HomePage.sName: (context) {
                 ///通过 Localizations.override 包裹一层，
                 return new GSYLocalizations(
                   child: new HomePage(),

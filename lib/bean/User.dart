@@ -1,6 +1,12 @@
-import 'package:example01/bean/BaseBean.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class User extends BaseBean {
+part 'User.g.dart';
+// user.g.dart 将在我们运行生成命令后自动生成
+
+
+///这个标注是告诉生成器，这个类是需要生成Model类的
+@JsonSerializable()
+class User extends Object {
   static User _user;
 
   static User getInstance() {
@@ -49,22 +55,30 @@ class User extends BaseBean {
     this.schoolId,
   });
 
-  formJson(Map<String, Object> map) {
-    getInstance();
-    _user.id = map["id"];
-    _user.appkey = map["appkey"];
-    _user.uuid = map["uuid"];
-    _user.udid = map["udid"];
-    _user.nickName = map["nickName"];
-    _user.portrait = map["portrait"];
-    _user.sex = map["sex"];
-    _user.schoolId = map["schoolId"];
-    _user.mobile = map["mobile"];
-    _user.wallet = map["wallet"];
-  }
+//  formJson(Map<String, Object> map) {
+//    if (map == null) {
+//      _user = null;
+//      return getInstance();
+//    }
+//    _user.id = map["id"];
+//    _user.appkey = map["appkey"];
+//    _user.uuid = map["uuid"];
+//    _user.udid = map["udid"];
+//    _user.nickName = map["nickName"];
+//    _user.portrait = map["portrait"];
+//    _user.sex = map["sex"];
+//    _user.schoolId = map["schoolId"];
+//    _user.mobile = map["mobile"];
+//    _user.wallet = map["wallet"];
+//    return this;
+//  }
+//
+//  @override
+//  String toString() {
+//    return super.toString();
+//  }
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  @override
-  String toString() {
-    return super.toString();
-  }
+
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 }

@@ -23,10 +23,13 @@ dependencies:
   sqflite: ^0.12.2+1
   path_provider: ^0.4.1
   flutter_redux: ^0.5.2  #全局状态管理机
+  json_annotation: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: ^1.1.1
+  json_serializable: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
