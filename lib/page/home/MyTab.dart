@@ -14,7 +14,20 @@ class MyTab extends StatefulWidget {
   MyTabState createState() => new MyTabState();
 }
 
-class MyTabState extends State<MyTab> {
+class MyTabState extends State<MyTab>
+    with AutomaticKeepAliveClientMixin<MyTab> {
+  @override
+  void initState() {
+    super.initState();
+    print("MyTabState initState");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("MyTabState dispose");
+  }
+
   TextStyle getLeftTextStyle() {
     return new TextStyle(fontSize: 18, color: Color(0xFF333333));
   }
@@ -168,4 +181,7 @@ class MyTabState extends State<MyTab> {
       );
     });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

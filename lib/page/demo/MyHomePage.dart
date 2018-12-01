@@ -10,9 +10,21 @@ class MyHomePage extends StatefulWidget {
   }
 }
 
-class MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage>
+    with AutomaticKeepAliveClientMixin<MyHomePage> {
   String _bodyStr = '显示菜单的点击';
 
+  @override
+  void initState() {
+    super.initState();
+    print("MyHomePageState initState");
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    print("MyHomePageState dispose");
+  }
   @override
   Widget build(BuildContext context) {
     return new StoreBuilder<GSYState>(builder: (context, store) {
@@ -25,4 +37,7 @@ class MyHomePageState extends State<MyHomePage> {
           body: new Center(child: new Text(uer.nickName ?? _bodyStr)));
     });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
