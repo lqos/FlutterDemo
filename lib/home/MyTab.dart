@@ -1,9 +1,12 @@
+import 'package:example01/bean/User.dart';
 import 'package:example01/common/CommontItem.dart';
 import 'package:example01/home/LoginPage.dart';
 import 'package:example01/home/MySetPage.dart';
 import 'package:example01/home/Page1.dart';
+import 'package:example01/state/GSYState.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 class MyTab extends StatefulWidget {
   @override
@@ -11,8 +14,6 @@ class MyTab extends StatefulWidget {
 }
 
 class MyTabState extends State<MyTab> {
-  String _bodyStr = '显示2菜单的点击';
-
   TextStyle getLeftTextStyle() {
     return new TextStyle(fontSize: 18, color: Color(0xFF333333));
   }
@@ -46,7 +47,7 @@ class MyTabState extends State<MyTab> {
         break;
     }
     setState(() {
-      _bodyStr = value;
+//      _bodyStr = value;
     });
   }
 
@@ -66,90 +67,98 @@ class MyTabState extends State<MyTab> {
     print("devicePixelRatio = " + devicePixelRatio.toString());
     print(size.width * devicePixelRatio);
     print(size.height * devicePixelRatio);
-    return new Scaffold(
-      body: new SingleChildScrollView(
-        child: new Column(
-          children: <Widget>[
-            new Container(
-              width: size.width,
-              height: size.width * 17 / 25,
-              decoration: new BoxDecoration(
-                image: DecorationImage(
-                    image: new AssetImage("images/ic_user_bg.webp")),
+    return new StoreBuilder<GSYState>(builder: (context, store) {
+      User user = User.getInstance();
+      return new Scaffold(
+        body: new SingleChildScrollView(
+          child: new Column(
+            children: <Widget>[
+              new Container(
+                width: size.width,
+                height: size.width * 17 / 25,
+                decoration: new BoxDecoration(
+                  image: DecorationImage(
+                      image: new AssetImage("images/ic_user_bg.webp")),
+                ),
+                child: new Center(
+                  child: new InkWell(
+                      onTap: () {
+                        onclickItem(1003, user.nickName ?? "去登陆");
+                      },
+                      child: new Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new Icon(Icons.tag_faces),
+                          new Text(
+                            user == null
+                                ? "user == null"
+                                : (user.nickName == null
+                                ? "点击请登录"
+                                : user.nickName),
+//                            user.nickName ?? "点击请登录",
+                            maxLines: 1,
+                            style: new TextStyle(
+                                color: Colors.white, fontSize: 18),
+                          )
+                        ],
+                      )),
+                ),
               ),
-              child: new Center(
-                child: new InkWell(
-                    onTap: () {
-                      onclickItem(1003, "去登陆");
-                    },
-                    child: new Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new Icon(Icons.tag_faces),
-                        new Text(
-                          "点击请登录",
-                          maxLines: 1,
-                          style:
-                          new TextStyle(color: Colors.white, fontSize: 18),
-                        )
-                      ],
-                    )),
+              new CommonItem(
+                topLineHeight: 1,
+                onPressed: itemPressed,
+                leftIcon: new AssetImage("images/ic_account.png"),
+                leftText: "我的钱包",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
               ),
-            ),
-            new CommonItem(
-              topLineHeight: 1,
-              onPressed: itemPressed,
-              leftIcon: new AssetImage("images/ic_account.png"),
-              leftText: "我的钱包",
-              leftTextStyle: leftTextStyle,
-              rightTextStyle: rightTextStyle,
-              rightText: "",
-            ),
-            new CommonItem(
-              onPressed: itemPressed,
-              leftIcon: new AssetImage("images/ic_mine_message.png"),
-              leftText: "消息中心",
-              leftTextStyle: leftTextStyle,
-              rightTextStyle: rightTextStyle,
-              rightText: "",
-            ),
-            new CommonItem(
-              onPressed: itemPressed,
-              leftIcon: new AssetImage("images/ic_collection.png"),
-              leftText: "我的收藏",
-              leftTextStyle: leftTextStyle,
-              rightTextStyle: rightTextStyle,
-              rightText: "",
-            ),
-            new CommonItem(
-              onPressed: itemPressed,
-              leftIcon: new AssetImage("images/ic_mine_faq.png"),
-              leftText: "常见问题",
-              leftTextStyle: leftTextStyle,
-              rightTextStyle: rightTextStyle,
-              rightText: "",
-            ),
-            new CommonItem(
-              ids: 1002,
-              onPressed: itemPressed,
-              leftIcon: new AssetImage("images/ic_mine_setting.png"),
-              leftText: "设置",
-              leftTextStyle: leftTextStyle,
-              rightTextStyle: rightTextStyle,
-              rightText: "",
-            ),
-            new CommonItem(
-              ids: 1001,
-              onPressed: itemPressed,
-              leftIcon: new AssetImage("images/ic_mine_setting.png"),
-              leftText: "Demo",
-              leftTextStyle: leftTextStyle,
-              rightTextStyle: rightTextStyle,
-              rightText: "",
-            ),
-          ],
+              new CommonItem(
+                onPressed: itemPressed,
+                leftIcon: new AssetImage("images/ic_mine_message.png"),
+                leftText: "消息中心",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
+              ),
+              new CommonItem(
+                onPressed: itemPressed,
+                leftIcon: new AssetImage("images/ic_collection.png"),
+                leftText: "我的收藏",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
+              ),
+              new CommonItem(
+                onPressed: itemPressed,
+                leftIcon: new AssetImage("images/ic_mine_faq.png"),
+                leftText: "常见问题",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
+              ),
+              new CommonItem(
+                ids: 1002,
+                onPressed: itemPressed,
+                leftIcon: new AssetImage("images/ic_mine_setting.png"),
+                leftText: "设置",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
+              ),
+              new CommonItem(
+                ids: 1001,
+                onPressed: itemPressed,
+                leftIcon: new AssetImage("images/ic_mine_setting.png"),
+                leftText: "Demo",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

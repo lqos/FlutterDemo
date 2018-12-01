@@ -1,4 +1,7 @@
+import 'package:example01/bean/User.dart';
+import 'package:example01/state/GSYState.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -12,11 +15,14 @@ class MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("发1现"),
-          centerTitle: true,
-        ),
-        body: new Center(child: new Text(_bodyStr)));
+    return new StoreBuilder<GSYState>(builder: (context, store) {
+      User uer = User.getInstance();
+      return new Scaffold(
+          appBar: new AppBar(
+            title: new Text(uer.nickName ?? "示"),
+            centerTitle: true,
+          ),
+          body: new Center(child: new Text(uer.nickName ?? _bodyStr)));
+    });
   }
 }
