@@ -55,46 +55,26 @@ class UserDao {
     } else {
       return false;
     }
-
-//      future.then((bean) {
-//      var s = bean.data;
-//      Map<String, Object> map = new Map();
-//      s.forEach((k, v) {
-//        map[k] = v;
-//      });
-//      UserLoginBean userLoginBean = UserLoginBean.formJson(map);
-//      if (userLoginBean.code == 1000) {
-//        PreferencesUtils.putString("loginBeaninfo", s.toString());
-//        PreferencesUtils.putString("token", userLoginBean.token);
-//        PreferencesUtils.putString("userId", userLoginBean.userId);
-//        Http.getInstance().addHeader("token", userLoginBean.token);
-//        Http.getInstance().addHeader("userId", userLoginBean.userId);
-//        getProfile(userLoginBean.userId);
-//
-//        store.dispatch(new UpdateUserAction(data.data));
-//      }
-//    });
   }
 
   static getProfile(String userId) async {
     Map<String, Object> map = new Map();
-    map["userId"] = userId;
+    map['userId'] = userId;
     Response res = await Http.getInstance().get(HttpContans.profile, map);
     if (res != null && res.data != null && res.statusCode == 200) {
-      return User.fromJson(res.data["data"]);
+      return User.fromJson(res.data['data']);
     } else {
       return null;
     }
+  }
 
-//    future.then((result) {
-//      Map<String, Object> maps = result.data;
-//      HttpResult data = HttpResult.formJson(maps);
-//      if (data.code == 1000) {
-//        print("获取用户信息成功");
-//        print(data.data.toString());
-//        PreferencesUtils.putString("userInfo", data.data.toString());
-////        Navigator.of(context).pop();
-//      }
-//    });
+  static logout() {
+    PreferencesUtils.remove(Config.TOKEN);
+    PreferencesUtils.remove(Config.USER_ID);
+    PreferencesUtils.remove(Config.USER_INFO);
+    List<String> list = List();
+    list.add('userId');
+    list.add('token');
+    Http.getInstance().remove(list);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:example01/bean/User.dart';
 import 'package:example01/common/CommontItem.dart';
+import 'package:example01/page/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/state/UserRedux.dart';
 import 'package:flutter/material.dart';
@@ -44,12 +45,18 @@ class SetState extends State<MySetPage> {
                 topLineHeight: 1,
               ),
               new CommonItem(
-                onPressed: (ids, value) {
-                  User user = User.getInstance();
-                  user.nickName = value;
-                  store.dispatch(new UpdateUserAction(user));
-                },
                 leftText: "检查更新",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
+              ),
+              new CommonItem(
+                onPressed: (ids, valus) {
+                  UserDao.logout();
+                  store.dispatch(UpdateUserAction(User.getInstance()));
+                  Navigator.pop(context);
+                },
+                leftText: "退出登录",
                 leftTextStyle: leftTextStyle,
                 rightTextStyle: rightTextStyle,
                 rightText: "",

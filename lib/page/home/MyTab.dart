@@ -1,7 +1,7 @@
 import 'package:example01/bean/User.dart';
 import 'package:example01/common/CommontItem.dart';
+import 'package:example01/common/config/Nav.dart';
 import 'package:example01/page/home/LoginPage.dart';
-import 'package:example01/page/home/MySetPage.dart';
 import 'package:example01/page/home/Page1.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,10 +32,7 @@ class MyTabState extends State<MyTab> {
         );
         break;
       case 1002:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => new MySetPage()),
-        );
+        Nav.goAppSet(context);
         break;
       case 1003:
         Navigator.push(
@@ -83,7 +80,7 @@ class MyTabState extends State<MyTab> {
                 child: new Center(
                   child: new InkWell(
                       onTap: () {
-                        onclickItem(1003, user.nickName ?? "去登陆");
+                        onclickItem(1003, "去登陆");
                       },
                       child: new Column(
                         mainAxisAlignment: MainAxisAlignment.center,

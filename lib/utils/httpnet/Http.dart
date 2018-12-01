@@ -66,6 +66,13 @@ class Http {
     options.headers = mHeaders;
   }
 
+  void remove(List<String> keys) {
+    keys.forEach((key) {
+      mHeaders.remove(key);
+    });
+    options.headers = mHeaders;
+  }
+
   netFetch(String url, Options options) async {
     var mUrl = options.baseUrl + options.path;
     if (Config.DEBUG) {
