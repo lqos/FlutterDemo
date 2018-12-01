@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:example01/bean/HttpResult.dart';
+import 'package:dio/dio.dart';
 import 'package:example01/bean/User.dart';
 import 'package:example01/common/config/config.dart';
 import 'package:example01/state/GSYState.dart';
@@ -41,11 +41,19 @@ class UserDao {
     Http.getInstance().addHeader("userId", id);
   }
 
-  static void toLogin(Store<GSYState> store) async {
+  static toLogin(Store<GSYState> store) async {
     var data = {"accountName": "18232077504", "password": "123456"};
-    var res = await Http.getInstance().postJson(HttpContans.login, data);
-    if (res != null) {
-      print(res.toString());
+    Response res = await Http.getInstance().postJson(HttpContans.login, data);
+    if (res != null && res.statusCode == 200 && res.data != null) {
+      initHttp(res.data['token'], res.data['userId'].toString());
+      PreferencesUtils.putString(Config.TOKEN, res.data['token']);
+      PreferencesUtils.putString(Config.USER_ID, res.data['userId'].toString());
+      User user = await getProfile(res.data['userId'].toString());
+      PreferencesUtils.putString(Config.USER_INFO, json.encode(user.toJson()));
+      store.dispatch(new UpdateUserAction(user));
+      return true && user != null;
+    } else {
+      return false;
     }
 
 //      future.then((bean) {
@@ -68,19 +76,25 @@ class UserDao {
 //    });
   }
 
-  static getProfile(String userId) {
+  static getProfile(String userId) async {
     Map<String, Object> map = new Map();
     map["userId"] = userId;
-    Future future = Http.getInstance().get(HttpContans.profile, map);
-    future.then((result) {
-      Map<String, Object> maps = result.data;
-      HttpResult data = HttpResult.formJson(maps);
-      if (data.code == 1000) {
-        print("获取用户信息成功");
-        print(data.data.toString());
-        PreferencesUtils.putString("userInfo", data.data.toString());
-//        Navigator.of(context).pop();
-      }
-    });
+    Response res = await Http.getInstance().get(HttpContans.profile, map);
+    if (res != null && res.data != null && res.statusCode == 200) {
+      return User.fromJson(res.data["data"]);
+    } else {
+      return null;
+    }
+
+//    future.then((result) {
+//      Map<String, Object> maps = result.data;
+//      HttpResult data = HttpResult.formJson(maps);
+//      if (data.code == 1000) {
+//        print("获取用户信息成功");
+//        print(data.data.toString());
+//        PreferencesUtils.putString("userInfo", data.data.toString());
+////        Navigator.of(context).pop();
+//      }
+//    });
   }
 }

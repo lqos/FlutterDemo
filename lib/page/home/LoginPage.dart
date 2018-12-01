@@ -91,7 +91,7 @@ class LoginPageState extends State<LoginPage> {
     });
   }
 
-  toLogin(Store<GSYState> store) {
+  toLogin(Store<GSYState> store) async {
     //账号
     String account = phoneController.text.toString();
     if (!isInvalidMobile(account)) {
@@ -102,8 +102,10 @@ class LoginPageState extends State<LoginPage> {
     if (!isInvalidPassword(password)) {
       return;
     }
-
-    UserDao.toLogin(store);
+    bool b = await UserDao.toLogin(store);
+    if (b) {
+      Navigator.pop(context);
+    }
   }
 
   showTipDialog(String message) {

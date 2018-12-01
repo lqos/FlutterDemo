@@ -81,7 +81,7 @@ class Http {
     Response response;
     try {
       Dio dio = new Dio();
-      response = await dio.post(url, options: options);
+      response = await dio.request(url, options: options);
 
       if (Config.DEBUG) {
         print(
