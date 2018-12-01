@@ -85,7 +85,13 @@ class MyTabState extends State<MyTab> {
                       child: new Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          new Icon(Icons.tag_faces),
+                          user != null && user.id > 0
+                              ? new Image.network(
+                            user.portrait,
+                            width: 50,
+                            height: 50,
+                          )
+                              : new Icon(Icons.tag_faces),
                           new Text(
                             user == null
                                 ? "user == null"
