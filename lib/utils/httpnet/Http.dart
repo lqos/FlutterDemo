@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:example01/common/config/config.dart';
 import 'package:example01/utils/httpnet/HttpContans.dart';
@@ -38,6 +40,22 @@ class Http {
     return await netFetch('$url$prams', options);
   }
 
+  postImage(String url, Map<String, Object> map, var file) async {
+    String prams = "";
+    String pin = "?";
+    if (map != null)
+      map.forEach((key, value) {
+        prams = '$prams$pin$key=$value';
+        pin = '&';
+      });
+    Options options = this.options;
+    options.method = "POST";
+    options.data = file;
+    options.contentType = ContentType.binary;
+    options.path = '$url$prams';
+    return await netFetch('$url$prams', options);
+  }
+
   get(String url, Map<String, Object> map) async {
     String prams = "";
     String pin = "?";
@@ -57,7 +75,7 @@ class Http {
     options.method = "POST";
     options.data = data;
     options.path = url;
-    options.headers["content-type"] = "application/json;charset=UTF-8";
+    options.contentType = ContentType.json;
     return await netFetch(url, options);
   }
 

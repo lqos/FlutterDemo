@@ -1,8 +1,17 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:example01/bean/User.dart';
 import 'package:example01/page/dao/UserDao.dart';
+import 'package:example01/state/GSYState.dart';
 import 'package:example01/utils/AppUtils.dart';
 import 'package:example01/utils/DensityUtil.dart';
+import 'package:example01/utils/httpnet/Http.dart';
+import 'package:example01/utils/httpnet/HttpContans.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:redux/redux.dart';
 
 class UserInfoPage extends StatefulWidget {
   @override
@@ -96,29 +105,67 @@ class UserInfoPageState extends State<UserInfoPage> {
 
   Widget _showNomalWid(BuildContext context) {
     return new Container(
-      height: DensityUtil.getwx(context, 140),
+      height: DensityUtil.getwx(context, 136),
       child: new Column(
         children: <Widget>[
-          getText("拍照"),
+          getText("拍照", () {
+            getImage(1);
+          }),
           new Container(
             color: Color(0xffdddddd),
             height: DensityUtil.getwx(context, 0.5),
           ),
-          getText("相册"),
+          getText("相册", () {
+            getImage(2);
+          }),
           new Container(
             color: Color(0xffdddddd),
             height: DensityUtil.getwx(context, 0.5),
           ),
-          getText("取消"),
+          getText("取消", () {
+            getImage(0);
+          }),
         ],
       ),
     );
   }
 
-  getText(String value) {
+  Future getImage(value) async {
+    Navigator.of(context).pop();
+    if (value != 0) {
+      var _image = await ImagePicker.pickImage(
+          source: value == 1 ? ImageSource.camera : ImageSource.gallery);
+      if (_image == null) {
+        return null;
+      }
+
+      FormData formData = new FormData.from({
+        "file": [new UploadFileInfo(_image, "avatar.png")]
+      });
+      print(json.encode(user));
+      Response response = await Http.getInstance().postImage(
+          HttpContans.uploadPortrait + user.id.toString(), null, formData);
+      if (response != null &&
+          response.data != null &&
+          response.statusCode == 200) {
+        user.portrait = response.data['image'];
+        Store<GSYState> store = StoreProvider.of(context);
+        UserDao.saveUserInfo(user, store);
+        print(json.encode(user));
+        setState(() {});
+      }
+    }
+  }
+
+  getText(String value, Function doit) {
     return new Container(
-      padding: EdgeInsets.all(DensityUtil.getwx(context, 15)),
-      child: new Text(value),
+      height: DensityUtil.getwx(context, 45),
+      child: InkWell(
+        child: new Center(
+          child: new Text(value),
+        ),
+        onTap: doit,
+      ),
     );
   }
 }

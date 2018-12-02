@@ -11,6 +11,12 @@ import 'package:example01/utils/httpnet/HttpContans.dart';
 import 'package:redux/redux.dart';
 
 class UserDao {
+  ///用户信息变更时保存
+  static saveUserInfo(User user, Store store) {
+    PreferencesUtils.putString(Config.USER_INFO, json.encode(user.toJson()));
+    store.dispatch(new UpdateUserAction(user));
+  }
+
   ///初始化用户信息
   static initUserInfo(Store store) async {
     var token = await PreferencesUtils.getString(Config.TOKEN, "");
@@ -18,6 +24,7 @@ class UserDao {
     if (user != null && token.isNotEmpty && user.id > 0) {
       store.dispatch(new UpdateUserAction(user));
       initHttp(token, user.id.toString());
+      getProfile(user.id.toString());
       return user;
     } else {
       return null;
@@ -49,8 +56,7 @@ class UserDao {
       PreferencesUtils.putString(Config.TOKEN, res.data['token']);
       PreferencesUtils.putString(Config.USER_ID, res.data['userId'].toString());
       User user = await getProfile(res.data['userId'].toString());
-      PreferencesUtils.putString(Config.USER_INFO, json.encode(user.toJson()));
-      store.dispatch(new UpdateUserAction(user));
+      saveUserInfo(user, store);
       return true && user != null;
     } else {
       return false;
