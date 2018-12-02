@@ -5,6 +5,7 @@ import 'package:example01/page/home/LoginPage.dart';
 import 'package:example01/page/home/Page1.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/utils/AppUtils.dart';
+import 'package:example01/utils/DensityUtil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -55,7 +56,7 @@ class MyTabState extends State<MyTab>
             MaterialPageRoute(builder: (context) => new LoginPage()),
           );
         } else {
-          print("处于登录状态");
+          Nav.goUserInfoPage(context);
         }
 
         break;
@@ -74,15 +75,7 @@ class MyTabState extends State<MyTab>
     final itemPressed = (int ids, String value) {
       onclickItem(ids, value);
     };
-    Size size = MediaQuery
-        .of(context)
-        .size;
-    final double devicePixelRatio = MediaQuery
-        .of(context)
-        .devicePixelRatio;
-    print("devicePixelRatio = " + devicePixelRatio.toString());
-    print(size.width * devicePixelRatio);
-    print(size.height * devicePixelRatio);
+
     return new StoreBuilder<GSYState>(builder: (context, store) {
       User user = store.state.userInfo;
       return new Scaffold(
@@ -90,8 +83,8 @@ class MyTabState extends State<MyTab>
           child: new Column(
             children: <Widget>[
               new Container(
-                width: size.width,
-                height: size.width * 17 / 25,
+                width: DensityUtil.getSW(context),
+                height: DensityUtil.getSW(context) * 17 / 25,
                 decoration: new BoxDecoration(
                   image: DecorationImage(
                       image: new AssetImage("images/ic_user_bg.webp")),
@@ -105,10 +98,12 @@ class MyTabState extends State<MyTab>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           AppUtils.checkLoin(context)
-                              ? new Image.network(
-                            user.portrait,
-                            width: 50,
-                            height: 50,
+                              ? new ClipOval(
+                            child: new Image.network(
+                              user.portrait,
+                              width: DensityUtil.getwx(context, 60),
+                              height: DensityUtil.getwx(context, 60),
+                            ),
                           )
                               : new Icon(Icons.tag_faces),
                           new Text(
