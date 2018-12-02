@@ -16,6 +16,11 @@ class HomePageState extends State<HomePage> {
   int _tabIndex = 0;
   var _bodys = [new MyHomePage(), new MenusDemo(), new MyTab()];
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
   getIcon(int index) {
     if (index == 0) {
       return new Icon(Icons.home);
@@ -57,7 +62,11 @@ class HomePageState extends State<HomePage> {
         }
       },
       child: new Scaffold(
-        body: _bodys[_tabIndex],
+        body: IndexedStack(
+          children: _bodys,
+          index: _tabIndex,
+          alignment: const Alignment(0.6, 0.6),
+        ),
         bottomNavigationBar: new BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             new BottomNavigationBarItem(
