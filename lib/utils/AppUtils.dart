@@ -10,9 +10,5 @@ class AppUtils {
       return false;
     }
     return store.state.userInfo.id != null && store.state.userInfo.id > 0;
-//    if (store.state.userInfo.id != null && store.state.userInfo.id < 0) {
-//      return false;
-//    }
-//    return true;
   }
 }

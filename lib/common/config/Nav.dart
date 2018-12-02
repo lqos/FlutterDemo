@@ -1,3 +1,4 @@
+import 'package:example01/page/UserInfoPage.dart';
 import 'package:example01/page/demo/Home.dart';
 import 'package:example01/page/home/MySetPage.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,14 @@ class Nav {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => new MySetPage()),
+    );
+  }
+
+  ///用户信息
+  static goUserInfoPage(context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => new UserInfoPage()),
     );
   }
 }
