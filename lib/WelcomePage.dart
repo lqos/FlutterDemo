@@ -20,7 +20,11 @@ class _WelcomePage extends State<WelcomePage> {
   @override
   void initState() {
     super.initState();
+    result = false;
   }
+
+  ///避免多次进入
+  bool result;
 
   /*这个函数会紧跟在initState之后调用，并且可以调用BuildContext.inheritFromWidgetOfExactType，
   那么BuildContext.inheritFromWidgetOfExactType的使用场景是什么呢？
@@ -28,6 +32,10 @@ class _WelcomePage extends State<WelcomePage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    if (result) {
+      return;
+    }
+    result = true;
     Store<GSYState> store = StoreProvider.of(context);
     UserDao.initUserInfo(store).then((user) {
       if (user == null) {
@@ -35,6 +43,7 @@ class _WelcomePage extends State<WelcomePage> {
       } else {
         print("wei初始化完成");
       }
+      Navigator.of(context).pop();
       Nav.goHome(context);
     });
   }
