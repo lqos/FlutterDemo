@@ -66,23 +66,59 @@ class UserInfoPageState extends State<UserInfoPage> {
   getHeaderItems(leftText, value) {
     double pd = DensityUtil.getwx(context, 15);
     return new Container(
-      padding: EdgeInsets.all(pd),
-      color: Colors.white,
-      child: new Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        padding: EdgeInsets.all(pd),
+        color: Colors.white,
+        child: InkWell(
+          onTap: () {
+            showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return _showNomalWid(context);
+                });
+          },
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              new Text(leftText),
+              AppUtils.checkLoin(context) && user != null
+                  ? new ClipOval(
+                child: new Image.network(
+                  value,
+                  width: pd * 4,
+                  height: pd * 4,
+                ),
+              )
+                  : new Icon(Icons.tag_faces)
+            ],
+          ),
+        ));
+  }
+
+  Widget _showNomalWid(BuildContext context) {
+    return new Container(
+      height: DensityUtil.getwx(context, 140),
+      child: new Column(
         children: <Widget>[
-          new Text(leftText),
-          AppUtils.checkLoin(context) && user != null
-              ? new ClipOval(
-                  child: new Image.network(
-                    value,
-                    width: pd * 4,
-                    height: pd * 4,
-                  ),
-                )
-              : new Icon(Icons.tag_faces)
+          getText("拍照"),
+          new Container(
+            color: Color(0xffdddddd),
+            height: DensityUtil.getwx(context, 0.5),
+          ),
+          getText("相册"),
+          new Container(
+            color: Color(0xffdddddd),
+            height: DensityUtil.getwx(context, 0.5),
+          ),
+          getText("取消"),
         ],
       ),
+    );
+  }
+
+  getText(String value) {
+    return new Container(
+      padding: EdgeInsets.all(DensityUtil.getwx(context, 15)),
+      child: new Text(value),
     );
   }
 }
