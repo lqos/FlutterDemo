@@ -2,6 +2,7 @@ import 'package:example01/page/demo/MyHomePage.dart';
 import 'package:example01/page/home/MenusDemo.dart';
 import 'package:example01/page/home/MyTab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   static const sName = "HomePage";
@@ -57,8 +58,9 @@ class HomePageState extends State<HomePage> {
       //监听返回键或者左上角返回
       onWillPop: () {
         print("点击返回");
-        if (Navigator.canPop(context)) {
+        if (!Navigator.canPop(context)) {
           print("退出app");
+          SystemNavigator.pop();
         }
       },
       child: new Scaffold(
