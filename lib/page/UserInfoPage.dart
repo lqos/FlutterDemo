@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:example01/bean/User.dart';
+import 'package:example01/common/widget/LineView.dart';
 import 'package:example01/page/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/utils/AppUtils.dart';
@@ -34,10 +35,7 @@ class UserInfoPageState extends State<UserInfoPage> {
 
   @override
   Widget build(BuildContext context) {
-    var line = new Container(
-      color: Color(0xffdddddd),
-      height: DensityUtil.getwx(context, 0.5),
-    );
+    var line = LineView.line;
 
     return Scaffold(
       appBar: new AppBar(
@@ -111,17 +109,11 @@ class UserInfoPageState extends State<UserInfoPage> {
           getText("拍照", () {
             getImage(1);
           }),
-          new Container(
-            color: Color(0xffdddddd),
-            height: DensityUtil.getwx(context, 0.5),
-          ),
+          LineView.line,
           getText("相册", () {
             getImage(2);
           }),
-          new Container(
-            color: Color(0xffdddddd),
-            height: DensityUtil.getwx(context, 0.5),
-          ),
+          LineView.line,
           getText("取消", () {
             getImage(0);
           }),

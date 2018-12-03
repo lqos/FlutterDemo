@@ -1,3 +1,4 @@
+import 'package:example01/common/widget/LineView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -54,10 +55,7 @@ class CommonItem extends StatelessWidget {
         decoration: new BoxDecoration(color: bgColor),
         child: new Column(
           children: <Widget>[
-            new Container(
-              height: topLineHeight,
-              color: Color(0xFFeeeeee),
-            ),
+            LineView(length: topLineHeight),
             new Container(
                 padding: const EdgeInsets.fromLTRB(15, 8, 15, 8),
                 child: new Row(
@@ -96,20 +94,20 @@ class TextWithLeftIcon extends StatelessWidget {
     var lefticon;
     if (icon != null) {
       lefticon =
-          new Image(image: icon, height: 32, width: 32, fit: BoxFit.fill);
+      new Image(image: icon, height: 32, width: 32, fit: BoxFit.fill);
     } else {
       lefticon = new Text("");
     }
     return new Container(
         child: new Row(
-      children: <Widget>[
-        lefticon,
-        new Text(
-          this.text,
-          style: textStyle,
-        ),
-      ],
-    ));
+          children: <Widget>[
+            lefticon,
+            new Text(
+              this.text,
+              style: textStyle,
+            ),
+          ],
+        ));
   }
 }
 
@@ -126,7 +124,7 @@ class TextWithRightIcon extends StatelessWidget {
     var lefticon;
     if (icon != null) {
       lefticon =
-          new Image(image: icon, height: 30, width: 30, fit: BoxFit.fill);
+      new Image(image: icon, height: 30, width: 30, fit: BoxFit.fill);
     } else {
       IconData iconData = Icons.chevron_right;
       lefticon = new Icon(iconData, color: Color(0xff666666));
@@ -135,13 +133,13 @@ class TextWithRightIcon extends StatelessWidget {
     // TODO: implement build
     return new Container(
         child: new Row(
-      children: <Widget>[
-        new Text(
-          this.text,
-          style: this.textStyle,
-        ),
-        lefticon,
-      ],
-    ));
+          children: <Widget>[
+            new Text(
+              this.text,
+              style: this.textStyle,
+            ),
+            lefticon,
+          ],
+        ));
   }
 }

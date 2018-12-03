@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:example01/bean/NewsBean.dart';
 import 'package:example01/common/config/config.dart';
+import 'package:example01/common/widget/LineView.dart';
 import 'package:example01/utils/DensityUtil.dart';
 import 'package:example01/utils/PreferencesUtils.dart';
 import 'package:example01/utils/httpnet/Http.dart';
@@ -127,10 +128,11 @@ class _MenusDemoState extends State<MenusDemo>
     double imageWidth = DensityUtil.getwx(context, 110);
     return new Column(
       children: <Widget>[
-        new Container(
-          color: Color(0xffdddddd),
-          height: index != 0 ? 1 : 0,
-        ),
+        index != 0
+            ? LineView(
+          length: null,
+        )
+            : LineView.line,
         Container(
           padding: EdgeInsets.all(w),
           child: new Row(
