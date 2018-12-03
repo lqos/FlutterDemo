@@ -6,6 +6,7 @@ import 'package:example01/common/widget/LineView.dart';
 import 'package:example01/page/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/utils/AppUtils.dart';
+import 'package:example01/utils/CommontUtils.dart';
 import 'package:example01/utils/DensityUtil.dart';
 import 'package:example01/utils/httpnet/Http.dart';
 import 'package:example01/utils/httpnet/HttpContans.dart';
@@ -134,9 +135,10 @@ class UserInfoPageState extends State<UserInfoPage> {
       FormData formData = new FormData.from({
         "file": [new UploadFileInfo(_image, "avatar.png")]
       });
-      print(json.encode(user));
+      CommontUtils.showLoadingDialog(context);
       Response response = await Http.getInstance().postImage(
           HttpContans.uploadPortrait + user.id.toString(), null, formData);
+      Navigator.pop(context);
       if (response != null &&
           response.data != null &&
           response.statusCode == 200) {

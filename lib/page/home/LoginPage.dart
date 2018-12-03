@@ -1,6 +1,7 @@
 //登录界面
 import 'package:example01/page/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
+import 'package:example01/utils/CommontUtils.dart';
 import 'package:example01/utils/RegUtils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -102,7 +103,10 @@ class LoginPageState extends State<LoginPage> {
     if (!isInvalidPassword(password)) {
       return;
     }
-    bool b = await UserDao.toLogin(store);
+    CommontUtils.showLoadingDialog(context);
+    var data = {"accountName": account, "password": password};
+    bool b = await UserDao.toLogin(store, data);
+    Navigator.pop(context);
     if (b) {
       Navigator.pop(context);
     }

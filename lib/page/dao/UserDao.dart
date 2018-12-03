@@ -48,8 +48,7 @@ class UserDao {
     Http.getInstance().addHeader("userId", id);
   }
 
-  static toLogin(Store<GSYState> store) async {
-    var data = {"accountName": "18232077504", "password": "123456"};
+  static toLogin(Store<GSYState> store, Object data) async {
     Response res = await Http.getInstance().postJson(HttpContans.login, data);
     if (res != null && res.statusCode == 200 && res.data != null) {
       initHttp(res.data['token'], res.data['userId'].toString());

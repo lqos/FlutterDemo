@@ -5,6 +5,7 @@ import 'package:example01/page/home/LoginPage.dart';
 import 'package:example01/page/home/Page1.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/utils/AppUtils.dart';
+import 'package:example01/utils/CommontUtils.dart';
 import 'package:example01/utils/DensityUtil.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,10 @@ class MyTabState extends State<MyTab>
 
         break;
       default:
+        CommontUtils.showLoadingDialog(context);
+        Future.delayed(new Duration(seconds: 5)).then((data) {
+          Navigator.of(context).pop();
+        });
         break;
     }
     setState(() {
