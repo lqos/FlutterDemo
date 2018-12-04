@@ -28,7 +28,7 @@ class _MenusDemoState extends State<MenusDemo>
     super.initState();
     data = List();
     print("_MenusDemoState initState");
-    getNews(page);
+//    getNews(page);
 
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==

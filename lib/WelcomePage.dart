@@ -43,7 +43,10 @@ class _WelcomePage extends State<WelcomePage> {
       } else {
         print("wei初始化完成");
       }
-      Navigator.of(context).pop();
+//      Navigator.of(context).pop();
+
+    }).then((user) {
+
       Nav.goHome(context);
     });
   }
