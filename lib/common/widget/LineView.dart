@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 /*
  * 一条直线
  */
+// ignore: must_be_immutable
 class LineView extends StatelessWidget {
   ///直线颜色
   Color color;

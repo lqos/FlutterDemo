@@ -7,7 +7,7 @@ import 'package:redux/redux.dart';
  * Date: 2018-07-16
  */
 // redux 的 combineReducers, 通过 TypedReducer 将 UpdateUserAction 与 reducers 关联起来
-final UserReducer = combineReducers<User>([
+final userReducer = combineReducers<User>([
   TypedReducer<User, UpdateUserAction>(_updateLoaded),
 ]);
 

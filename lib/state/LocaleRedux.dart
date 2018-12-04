@@ -7,7 +7,7 @@ import 'package:redux/redux.dart';
  * Date: 2018-07-16
  */
 
-final LocaleReducer = combineReducers<Locale>([
+final localeReducer = combineReducers<Locale>([
   TypedReducer<Locale, RefreshLocaleAction>(_refresh),
 ]);
 

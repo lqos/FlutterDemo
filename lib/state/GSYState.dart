@@ -36,7 +36,7 @@ class GSYState {
 GSYState appReducer(GSYState state, action) {
   return GSYState(
     ///通过 UserReducer 将 GSYState 内的 userInfo 和 action 关联在一起
-    userInfo: UserReducer(state.userInfo, action),
+    userInfo: userReducer(state.userInfo, action),
 
 //    ///通过 EventReducer 将 GSYState 内的 eventList 和 action 关联在一起
 //    eventList: EventReducer(state.eventList, action),
@@ -45,9 +45,9 @@ GSYState appReducer(GSYState state, action) {
 //    trendList: TrendReducer(state.trendList, action),
 
     ///通过 ThemeDataReducer 将 GSYState 内的 themeData 和 action 关联在一起
-    themeData: ThemeDataReducer(state.themeData, action),
+    themeData: themeDataReducer(state.themeData, action),
 
     ///通过 LocaleReducer 将 GSYState 内的 locale 和 action 关联在一起
-//    locale: LocaleReducer(state.locale, action),
+//    locale: localeReducer(state.locale, action),
   );
 }

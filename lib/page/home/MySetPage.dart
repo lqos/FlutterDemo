@@ -53,7 +53,7 @@ class SetState extends State<MySetPage> {
               new CommonItem(
                 onPressed: (ids, valus) {
                   UserDao.logout();
-                  store.dispatch(UpdateUserAction(User.getInstance()));
+                  store.dispatch(UpdateUserAction(User.empty()));
                   Navigator.pop(context);
                 },
                 leftText: "退出登录",
