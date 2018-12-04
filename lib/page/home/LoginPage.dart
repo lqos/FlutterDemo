@@ -1,4 +1,6 @@
 //登录界面
+import 'package:example01/bean/DataResult.dart';
+import 'package:example01/bean/User.dart';
 import 'package:example01/page/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/utils/CommontUtils.dart';
@@ -105,10 +107,12 @@ class LoginPageState extends State<LoginPage> {
     }
     CommontUtils.showLoadingDialog(context);
     var data = {"accountName": account, "password": password};
-    bool b = await UserDao.toLogin(store, data);
+    DataResult<User> dataResult = await UserDao.toLogin(store, data);
     Navigator.pop(context);
-    if (b) {
+    if (dataResult.result) {
       Navigator.pop(context);
+    } else {
+      print(dataResult.message);
     }
   }
 

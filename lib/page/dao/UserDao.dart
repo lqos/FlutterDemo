@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:example01/bean/DataResult.dart';
 import 'package:example01/bean/User.dart';
 import 'package:example01/common/config/config.dart';
 import 'package:example01/state/GSYState.dart';
@@ -51,25 +52,40 @@ class UserDao {
   static toLogin(Store<GSYState> store, Object data) async {
     Response res = await Http.getInstance().postJson(HttpContans.login, data);
     if (res != null && res.statusCode == 200 && res.data != null) {
-      initHttp(res.data['token'], res.data['userId'].toString());
-      PreferencesUtils.putString(Config.TOKEN, res.data['token']);
-      PreferencesUtils.putString(Config.USER_ID, res.data['userId'].toString());
-      User user = await getProfile(res.data['userId'].toString());
-      saveUserInfo(user, store);
-      return true && user != null;
+      if (res.data['code'] == 1000) {
+        initHttp(res.data['token'], res.data['userId'].toString());
+        PreferencesUtils.putString(Config.TOKEN, res.data['token']);
+        PreferencesUtils.putString(
+            Config.USER_ID, res.data['userId'].toString());
+        DataResult<User> dataResult =
+        await getProfile(res.data['userId'].toString());
+        if (dataResult.result) {
+          saveUserInfo(dataResult.data, store);
+        }
+        return dataResult;
+      }
+      return DataResult.create<User>(false, message: res.data['message']);
     } else {
-      return false;
+      return DataResult.create<User>(false, message: '未知错误');
     }
   }
 
   static getProfile(String userId) async {
+    if (userId.isEmpty) {
+      return DataResult.create<User>(false, message: '用户id为空');
+    }
     Map<String, Object> map = new Map();
     map['userId'] = userId;
     Response res = await Http.getInstance().get(HttpContans.profile, map);
     if (res != null && res.data != null && res.statusCode == 200) {
-      return User.fromJson(res.data['data']);
+      if (1000 == res.data['code']) {
+        return DataResult.create<User>(true,
+            data: User.fromJson(res.data['data']));
+      } else {
+        return DataResult.create<User>(false, message: res.data['message']);
+      }
     } else {
-      return null;
+      return DataResult.create<User>(false, message: '未知错误');
     }
   }
 
