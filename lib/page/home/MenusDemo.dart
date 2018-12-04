@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:example01/bean/NewsBean.dart';
+import 'package:example01/common/config/Nav.dart';
 import 'package:example01/common/config/config.dart';
 import 'package:example01/common/widget/LineView.dart';
 import 'package:example01/common/widget/ListViewMore.dart';
@@ -92,139 +93,146 @@ class _MenusDemoState extends State<MenusDemo>
           length: null,
         )
             : LineView.line,
-        Container(
-          padding: EdgeInsets.all(w),
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              new Container(
-                width: DensityUtil.getwx(context, DensityUtil.DW) -
-                    w * 2.8 -
-                    imageWidth,
-                child: new Column(
-                  children: <Widget>[
-                    new Text(
-                      "${bean.title}",
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      style: new TextStyle(
-                          fontSize: DensityUtil.getwx(context, 13),
-                          color: Color(0xff0f0f0f)),
-                    ),
-                    new Container(
+        InkWell(
+          onTap: () {
+            Nav.goNewsDetailPage(context, bean.id.toString());
+          },
+          child: Container(
+            padding: EdgeInsets.all(w),
+            child: new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                new Container(
+                  width: DensityUtil.getwx(context, DensityUtil.DW) -
+                      w * 2.8 -
+                      imageWidth,
+                  child: new Column(
+                    children: <Widget>[
+                      new Text(
+                        "${bean.title}",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        style: new TextStyle(
+                            fontSize: DensityUtil.getwx(context, 13),
+                            color: Color(0xff0f0f0f)),
+                      ),
+                      new Container(
+                          padding: EdgeInsets.fromLTRB(
+                              0,
+                              DensityUtil.getwx(context, 5),
+                              0,
+                              DensityUtil.getwx(context, 2)),
+                          child: new Text(
+                            "${bean.desp}",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            style: new TextStyle(
+                                fontSize: DensityUtil.getwx(context, 10.4),
+                                color: Color(0xff848484)),
+                          )),
+                      new Container(
                         padding: EdgeInsets.fromLTRB(
                             0,
                             DensityUtil.getwx(context, 5),
                             0,
-                            DensityUtil.getwx(context, 2)),
-                        child: new Text(
-                          "${bean.desp}",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: new TextStyle(
-                              fontSize: DensityUtil.getwx(context, 10.4),
-                              color: Color(0xff848484)),
-                        )),
-                    new Container(
-                      padding: EdgeInsets.fromLTRB(
-                          0,
-                          DensityUtil.getwx(context, 5),
-                          0,
-                          DensityUtil.getwx(context, 5)),
-                      child: new Row(
-                        children: <Widget>[
-                          new Container(
-                            decoration: new BoxDecoration(
-                              border: new Border.all(
-                                  width: 1.0, color: Color(0xFFE2F2FF)),
-                              borderRadius: new BorderRadius.all(
-                                  new Radius.circular(20.0)),
-                              color: Color(0xFFE2F2FF),
+                            DensityUtil.getwx(context, 5)),
+                        child: new Row(
+                          children: <Widget>[
+                            new Container(
+                              decoration: new BoxDecoration(
+                                border: new Border.all(
+                                    width: 1.0, color: Color(0xFFE2F2FF)),
+                                borderRadius: new BorderRadius.all(
+                                    new Radius.circular(20.0)),
+                                color: Color(0xFFE2F2FF),
+                              ),
+                              padding: EdgeInsets.fromLTRB(
+                                  DensityUtil.getwx(context, 10),
+                                  DensityUtil.getwx(context, 2),
+                                  DensityUtil.getwx(context, 10),
+                                  DensityUtil.getwx(context, 2)),
+                              child: new Text(
+                                "${bean.tag}",
+                                textAlign: TextAlign.center,
+                                overflow: TextOverflow.ellipsis,
+                                softWrap: true,
+                                maxLines: 1,
+                                style: new TextStyle(
+                                    fontSize: DensityUtil.getwx(context, 11),
+                                    color: Color(0xFF0F86E1)),
+                              ),
                             ),
-                            padding: EdgeInsets.fromLTRB(
-                                DensityUtil.getwx(context, 10),
-                                DensityUtil.getwx(context, 2),
-                                DensityUtil.getwx(context, 10),
-                                DensityUtil.getwx(context, 2)),
-                            child: new Text(
-                              "${bean.tag}",
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
-                              softWrap: true,
-                              maxLines: 1,
-                              style: new TextStyle(
-                                  fontSize: DensityUtil.getwx(context, 11),
-                                  color: Color(0xFF0F86E1)),
-                            ),
-                          ),
-                          new Container(
-                            padding: EdgeInsets.fromLTRB(
-                                DensityUtil.getwx(context, 10),
-                                DensityUtil.getwx(context, 2),
-                                DensityUtil.getwx(context, 5),
-                                DensityUtil.getwx(context, 2)),
-                            child: new Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.remove_red_eye,
-                                  color: Theme
-                                      .of(context)
-                                      .primaryColor,
-                                  size: 15,
-                                ),
-                                new Container(
-                                  padding: EdgeInsets.fromLTRB(
-                                      DensityUtil.getwx(context, 5), 0, 0, 0),
-                                  child: new Text(
-                                    bean.commentCount.toString() ?? "0",
-                                    style: TextStyle(color: Color(0xff979797)),
+                            new Container(
+                              padding: EdgeInsets.fromLTRB(
+                                  DensityUtil.getwx(context, 10),
+                                  DensityUtil.getwx(context, 2),
+                                  DensityUtil.getwx(context, 5),
+                                  DensityUtil.getwx(context, 2)),
+                              child: new Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.remove_red_eye,
+                                    color: Theme
+                                        .of(context)
+                                        .primaryColor,
+                                    size: 15,
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          new Container(
-                            padding: EdgeInsets.fromLTRB(
-                                DensityUtil.getwx(context, 5),
-                                DensityUtil.getwx(context, 2),
-                                DensityUtil.getwx(context, 5),
-                                DensityUtil.getwx(context, 2)),
-                            child: new Row(
-                              children: <Widget>[
-                                Icon(
-                                  Icons.favorite,
-                                  color: Theme
-                                      .of(context)
-                                      .primaryColor,
-                                  size: 15,
-                                ),
-                                new Container(
-                                  padding: EdgeInsets.fromLTRB(
-                                      DensityUtil.getwx(context, 5), 0, 0, 0),
-                                  child: new Text(
-                                    bean.goodCount.toString() ?? "0",
-                                    style: TextStyle(color: Color(0xff979797)),
+                                  new Container(
+                                    padding: EdgeInsets.fromLTRB(
+                                        DensityUtil.getwx(context, 5), 0, 0, 0),
+                                    child: new Text(
+                                      bean.commentCount.toString() ?? "0",
+                                      style:
+                                      TextStyle(color: Color(0xff979797)),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                            new Container(
+                              padding: EdgeInsets.fromLTRB(
+                                  DensityUtil.getwx(context, 5),
+                                  DensityUtil.getwx(context, 2),
+                                  DensityUtil.getwx(context, 5),
+                                  DensityUtil.getwx(context, 2)),
+                              child: new Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.favorite,
+                                    color: Theme
+                                        .of(context)
+                                        .primaryColor,
+                                    size: 15,
+                                  ),
+                                  new Container(
+                                    padding: EdgeInsets.fromLTRB(
+                                        DensityUtil.getwx(context, 5), 0, 0, 0),
+                                    child: new Text(
+                                      bean.goodCount.toString() ?? "0",
+                                      style:
+                                      TextStyle(color: Color(0xff979797)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                child: new Image.network(
-                  bean.logo ?? "",
-                  width: imageWidth,
-                  height: imageWidth * 102 / 141,
-                ),
-              )
-            ],
+                Container(
+                  child: new Image.network(
+                    bean.logo ?? "",
+                    width: imageWidth,
+                    height: imageWidth * 102 / 141,
+                  ),
+                )
+              ],
+            ),
           ),
-        )
+        ),
       ],
     );
   }

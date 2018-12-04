@@ -1,3 +1,4 @@
+import 'package:example01/page/NewsDetailPage.dart';
 import 'package:example01/page/UserInfoPage.dart';
 import 'package:example01/page/demo/Home.dart';
 import 'package:example01/page/home/MySetPage.dart';
@@ -22,6 +23,14 @@ class Nav {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => new UserInfoPage()),
+    );
+  }
+
+  ///咨询详情页
+  static goNewsDetailPage(context, String ids) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => new NewsDetailPage(ids)),
     );
   }
 }
