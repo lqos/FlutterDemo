@@ -1,0 +1,763 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta id="viewport" name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>无标题文档</title>
+    <style type="text/css" rel="stylesheet">
+        {
+	background-color: white;
+	max-width: 100%;
+	margin:0;
+	padding:0;
+	list-style:none;
+	text-decoration:none;
+    word-wrap: break-word;
+}
+#news_content p{
+	line-height:1.6em;
+	color:#393939;
+}
+#news_content p img{
+	display:inline-block;
+}
+body, div, img, ul, dl, dl dd, ul li, ol, ol li, h1, h2, h3, h4, h5, h6, p {
+	border:none;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+}
+body{
+	font-family: Helvetica,Arial,"STHeiti","Microsoft YaHei",sans-serif;
+	font-size: 16px;
+	margin: 0 auto;
+	background-color: white;
+	padding: 0 15px 40px;
+	color: #333
+}
+html {
+	height: 100%;
+}
+.n_about{
+	text-align: center;
+	margin-top: 4px;
+	color: #9199ac;
+	font-size:12px;
+
+}
+
+
+
+.news_title{
+	font-size: 23px;
+	margin:10px 34px 0;
+	text-align: center;
+}
+.header{
+    margin-top:30px;
+	text-align:left;
+	width:306px;
+}
+.time_s span{
+	padding-right:17px;
+	color:#9C9C9C;
+	font-size:13px;
+}
+
+
+.time_s{
+    width:100%;
+    float:left;
+}
+.clear{
+	clear:both;
+}
+.content{
+	width:100%;
+	clear:both;
+	padding: 20px 0 0px 0;
+	font-size: 15px;
+}
+.content dl{
+	border:1px solid #E6E6E6;
+	background:#fff;
+	text-align:center;
+	padding:4px;
+	margin-bottom:10px;
+}
+.content dt img{
+	width:100%;
+}
+.content dd{
+	font-size:15px;
+	line-height:24px;
+	color:#a1a1a1;
+	text-align:left;
+}
+#news_content{
+    width:100%;
+	margin: 0 auto;
+    overflow:hidden;
+}
+.b_title{
+	letter-spacing:7px;
+	font-size: 17px;
+	text-align: center;
+	margin: 20px auto 40px;
+	position: relative;
+}
+.b_title::after{
+	content:"";
+	position: absolute;
+	top: 30px;left: 50%;margin-left: -15px;
+	width: 20px;height: 3px;
+	background-color: #333;
+}
+
+.news_push{
+	display: table;
+	width: 100%;
+}
+.news_push li:first-child{
+	border-top: 1px solid #eeeded;
+}
+.news_push li{
+	height: 98px;
+	width: 100%;
+	border-bottom: 1px solid #eeeded;
+	position: relative;
+}
+.news_push li .title{
+	color: #333 !important;
+	font-size: 16px;
+	margin-right: 126px;
+	padding-top: 9px;
+	word-break: break-all;
+
+    max-height: 50px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+.news_push li .tip{
+	color: #333 !important;
+	opacity: 0.3;
+	font-size: 12px;
+	position: absolute;bottom: 10px;
+}
+
+.news_push li img{
+	position: absolute;
+	top: 8px;right: 0;
+	width: 110px;height: 82px;
+}
+.news_push li .title{
+	color: #333 !important;
+	font-size: 16px;
+	margin-right: 126px;
+	padding-top: 9px;
+	word-break: break-all;
+}
+.on_img .title{
+	font-size: 16px;
+	margin-right: 0 !important;
+}
+
+
+.comment_list {
+    margin: 16px 0 16px;
+}
+.comment_list > li {
+    border-bottom: 1px solid #eeeded;
+}
+.comment_list: first-child {
+    border-top: 1px solid #eeeded;
+}
+.comment_list > li > div {
+    margin-top: 10px;
+}
+.comment_list .u_head_img{
+    display: block;
+    height: 34px;
+    width: 34px;
+    margin: 0 10px 0 0;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    top: 4px;
+    border-radius: 50%;
+}
+.comment_list .u_name{
+    height: 24px;line-height: 25px;
+    font-size: 15px;
+    position: relative;
+    top: 2px;
+}
+.comment_list .post_time{
+    font-size: 11px;color: #b6bbc7;
+}
+.comment_list .share_det{
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.reply_user{
+	color: #b6bbc7;
+}
+.little_ux_button{
+	position: relative;
+	height: 40px;
+	line-height: 40px;
+	text-align: right;
+}
+.little_ux_button span{
+	float: right;
+	display: block;
+    font-size: 12px;
+	color: #afafaf;
+	min-width: 8px;height: 40px;
+	padding-left: 30px;
+    margin-left: 4px;
+	background-image: url("./little_ux_button.png");
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	background-size: 30px auto;
+}
+.little_ux_button .ux_comment{
+	background-position: 0 -80px;
+	margin-left: 13px;
+}
+.little_ux_button .ux_up_ed{
+	background-position: 0 -40px;
+	color: #ff6600;
+}
+
+
+.comment {
+    padding: 0px;
+    border-top: 1px solid #eeeded;
+}
+.comment > li {
+    margin-top: 15px;
+    border-bottom: 1px solid #eeeded;
+}
+.comment .user_info {
+    position: relative;
+    height: 50px;
+}
+.comment .user_icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 1px;
+    border-radius: 50%;
+}
+.comment .user_name_t {
+    position: relative;
+    width: 80%;
+    height: 40px;
+    left: 45px;
+}
+.comment .user_name {
+    font-size: 15px;
+}
+.comment .push_time {
+    position: absolute;
+    bottom: 0px;
+    font-size: 11px;
+    color: #b6bbc7;
+}
+.comment .content_text {
+    margin-left: 45px;
+    margin-top: 5px;
+    font-size:14px;
+}
+.comment .bottom_op {
+    font-size: 12px;
+    color: #9199ac;
+}
+.comment .comment_count {
+    float: right;
+}
+.comment .comment_icon {
+    float: right;
+}
+
+
+.news_prise {
+    position: relative;
+    height: 40px;
+        text-align: center;
+}
+.news_prise > div {
+  position: relative;
+        text-align: center;
+            width: 120px;
+            height: 40px;
+            margin-left:auto;
+            margin-right:auto;
+              line-height: 40px;
+/*    position: absolute;
+    text-align: center;
+   border: 1px solid #eeeded;
+ top: 50%;
+     left: 30%;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;*//**/
+/*    border-radius: 20px;
+    transform: translate(-50%,-50%);*/
+/*    border: 1px solid #eeeded;*/
+}
+.news_prise .prise_border {
+    border-color: #eeeded;
+}
+.news_prise .prise_border_ed {
+    border-color: #ff6600;
+}
+.news_prise > div > span {
+    display: block;
+    font-size: 12px;
+    min-width: 8px;height: 40px;
+    background-image: url("./little_ux_button.png");
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    margin-left: 13px;
+}
+.news_prise text_normal {
+    color: #afafaf;
+    background-position: 0 0px;
+}
+.text_selected {
+    background-position: 0 -40px;
+    color: #ff6600;
+}
+
+
+
+    </style>
+    <script>
+                    //setContent();
+
+
+
+
+
+    </script>
+
+</head>
+<body class="detail" id="bodyObj" onload="randomStyle()">
+<div class="beijing" id="headerObj" style="padding-left:0;">
+    <div style="">
+        <h1></h1>
+        <h1 id="news_title" class="news_title">#news_title#</h1>
+        <div class="n_about">
+            <span id="news_puttime">#news_puttime#</span>
+            <span class="line">|</span>
+            <span id="news_source">#news_source#</span>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div id="article" class="content">
+    <div id="news_content">
+        #news_content#
+    </div>
+</div>
+
+<!--<div class="news_prise">-->
+<!--<div id="news_prise_id" class="text_normal">-->
+<!--<span id="prise_text" class="text_selected">0</span>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--        推荐阅读-->
+<!--<div class="b_title"><b>推荐阅读</b></div>-->
+<!--<ul id="recommend_news_list" class="news_push">-->
+<!--</ul>-->
+
+<!--&lt;!&ndash;        评论&ndash;&gt;-->
+<!--<div class="b_title"><b>评论</b></div>-->
+<!--<ul id="ul_comment_list" class="comment">-->
+<!--</ul>-->
+<!--
+ <div style="height:100%" id="newsFrame">
+ </div>
+ -->
+
+<iframe id="mframe" src="#" style="display:none"></iframe>
+<script>
+        var styles = new Array("hot","baoguang","beijing");
+                        var CUSTOM_PROTOCOL_SCHEME = "jhscheme";
+                        var TAG_EVENT = "JH_TAP_EVENT";
+                        var IMG_EVENT = "JH_IMG_EVENT";
+                        var callHandler = true;
+
+// 新闻列表ul下li的id前缀
+var news_id_prefix = "newsid_"
+// 评论列表中的评论数量的id前缀
+var comment_id_prefix = "commentid_"
+// 评论列表中赞数量的id前缀
+var prise_id_prefix = "priseid_"
+
+// 点击评论,会调用APP方法
+function clickComment(index) {
+    messageHandlers.commentHandler(index);
+}
+// 点击新闻赞,会调用APP方法
+function clickNewPrise() {
+    setNewsPriseAction(0);
+    messageHandlers.newsPriseHandler();
+}
+
+// 设置新闻点赞按钮的可点击性
+function setNewsPriseAction(isClick) {
+    var prise = document.getElementById("news_prise_id");
+    if (isClick) {
+        prise.onclick = function() {
+            setNewsPriseAction(false);
+            clickNewPrise();setNewsPriseAction
+        }
+    } else {
+        prise.onclick = function() {
+            return;
+        }
+    }
+}
+
+// 点击评论赞,会调用APP方法
+function clickPrise(index) {
+    messageHandlers.favoriteHandler(index);
+}
+// 点击新闻,会调用APP方法
+function clickNews(index) {
+    messageHandlers.newsHandler(index);
+}
+//删除所有评论
+function deleteAllComment() {
+    var ul = document.getElementById("ul_comment_list");
+    ul.innerHTML = "";
+}
+// 设置评论列表中点赞数量
+function setPriseCount(index, count) {
+    var span = document.getElementById(prise_id_prefix+index);
+    span.innerText = count;
+    setPriseClassName(index, true);
+}
+// 设置新闻点赞数量
+function setNewsPriseCount(count, isSelected) {
+    var prise = document.getElementById("prise_text");
+    prise.innerText = count;
+    if (isSelected) {
+    prise.onclick = function() {
+                          clickNewPrise();
+                            };
+        prise.className = "text_selected";
+    } else {
+
+                                 prise.onclick = function() {
+                                clickNewPrise();
+                            };
+        prise.className = "text_normal";
+    }
+}
+
+                        // 向新闻列表插入有图片新闻
+                        function inserImgNewsElement(titleStr, timeStr, imgURL) {
+                            var ul = document.getElementById("recommend_news_list");
+                            var ulChildCount = ul.getElementsByTagName("li").length;
+                            var li = document.createElement("li");
+                            ul.appendChild(li);
+                            li.id = news_id_prefix+ulChildCount;
+                            li.onclick = function() {
+                                clickNews(ulChildCount);
+                            }
+                            var con_a = document.createElement("a");
+                            li.appendChild(con_a);
+                            var title_div = document.createElement("div");
+                            con_a.appendChild(title_div);
+                            title_div.className = "title";
+                            title_div.innerText = titleStr;
+                            var newtime_div = document.createElement("div");
+                            con_a.appendChild(newtime_div);
+                            newtime_div.className = "tip";
+                            newtime_div.innerText = timeStr;
+                            var img = document.createElement("img");
+                            con_a.appendChild(img);
+                            img.className = "u_head_img";
+                            img.src = imgURL;
+                        }
+
+
+// 向评论中插入评论
+function insertCommentElement(headIcon, userName, timeStr, isPrise, contentStr, priseStr, commentStr) {
+    var ul = document.getElementById("ul_comment_list");
+    var ulChildCount = ul.getElementsByTagName("li").length;
+    var li = document.createElement("li");
+    ul.appendChild(li);
+    var user_info_div = document.createElement("div");
+    li.appendChild(user_info_div);
+    user_info_div.className = "user_info";
+
+    var img = document.createElement("img");
+    user_info_div.appendChild(img);
+    img.className = "user_icon";
+    img.src = headIcon;
+
+    var user_div = document.createElement("div");
+    user_info_div.appendChild(user_div);
+    user_div.className = "user_name_t";
+
+    var user_name_div = document.createElement("div");
+    user_div.appendChild(user_name_div);
+    user_name_div.innerText = userName;
+
+    var post_time_div = document.createElement("div");
+    user_div.appendChild(post_time_div);
+    post_time_div.className = "push_time";
+    post_time_div.innerText = timeStr;
+
+    var content_div = document.createElement("div");
+    li.appendChild(content_div);
+    content_div.className = "content_text";
+    content_div.innerText = contentStr
+
+    var bo_div = document.createElement("div");
+    li.appendChild(bo_div);
+    bo_div.className = "little_ux_button";
+    <!--var comment_span = document.createElement("span");-->
+    <!--bo_div.appendChild(comment_span);-->
+    <!--comment_span.className = "ux_comment";-->
+    <!--comment_span.id = comment_id_prefix+ulChildCount;-->
+    <!--comment_span.innerText = commentStr;-->
+    <!--comment_span.onclick = function() {-->
+        <!--clickComment(ulChildCount);-->
+    <!--};-->
+
+    var prise_span = document.createElement("span");
+    bo_div.appendChild(prise_span);
+    prise_span.id = prise_id_prefix+ulChildCount;
+    prise_span.innerText = priseStr;
+    setPriseClassName(ulChildCount, isPrise);
+    prise_span.onclick = function() {
+        clickPrise(ulChildCount);
+    }
+}
+
+
+function setPriseClassName(index, isPrise) {
+    var priseSp = document.getElementById(prise_id_prefix+index);
+    if (isPrise) {
+        priseSp.className = "ux_up_ed";
+    } else {
+        priseSp.className = "ux_up";
+    }
+}
+
+                        //随机版式
+                        function randomStyle(){
+                            var index = parseInt(3*Math.random());
+                            var headerObj = document.getElementById("headerObj");
+                            headerObj.className = styles[index];
+                        }
+                    //设置标题
+                    function setTitle(title){
+                                    //alert("title");
+                        var newsTitle = document.getElementById("news_title");
+                        newsTitle.innerHTML = title;
+                    }
+                    function setBorder(showline){
+						if(!showline){
+						var headerObj=document.getElementById("headerObj");
+						headerObj.style.borderLeft='none';
+						}
+					}
+                    //设置内容
+                    function setContent(content){
+                    //alert(content);
+                        var newsContent = document.getElementById("news_content");
+                        newsContent.innerHTML = content
+                        imgsFormat();
+                        //            newsContent.innerHTML = replaceIMG(content); //替换图片样式
+                        imgWith(); //设置图片宽度
+                    }
+                    //设置来源
+                    function setSource(source){
+                        //   alert("haha");
+                        var newsSource = document.getElementById("news_source");
+                        if(source === ""){
+                            newsSource.innerHTML = "";
+                        }else{
+                            newsSource.innerHTML = ""+source;
+                        }
+                    }
+                    //设置发布时间
+                    function setPuttime(time){
+                        var newsTime = document.getElementById("news_puttime");
+                        newsTime.innerHTML = time;
+                    }
+                    //点击图片触发事件
+                    function tapImg(index){
+                        imgIndex = index;
+                        callHandler = false;
+                        var mframe = document.getElementById("mframe");
+                        mframe.src = CUSTOM_PROTOCOL_SCHEME + '://' + IMG_EVENT;
+                    }
+                    //返回图片的json数据
+                    function getImgJSON(){
+                        return imgsJSON;
+                    }
+                    function getImgIndex(){
+                        return imgIndex;
+                    }
+                    //回调ios 隐藏工具栏
+                    //        function callback(){
+                    //            if(callHandler){
+                    //                var mframe = document.getElementById("mframe");
+                    //                mframe.src = CUSTOM_PROTOCOL_SCHEME + '://' + TAG_EVENT;
+                    //            }
+                    //            callHandler = true;
+                    //        }
+                    //字体大小标准为17 (13,17,18)
+                    var fontSize = 17;
+                    function setFontSize(mFontSize){
+                        if(mFontSize != null)
+                        {
+                            fontSize = mFontSize;
+                        }
+                        var newsContent = document.getElementById("bodyObj");
+                        var pArray = document.getElementsByTagName("P");
+                        for(var i=0; i < pArray.length; i++){
+                            var pObj = pArray[i];
+                            pObj.style.fontSize = fontSize + "px";
+                        }
+                    }
+                    //放大字体
+                    function fontZoomIn(){
+                        fontSize = 18;
+                        setFontSize(fontSize);
+                        return fontSize;
+                    }
+                    //缩小字体
+                    function fontZoomOut(){
+                        fontSize = 13;
+                        setFontSize(fontSize);
+                        return fontSize;
+                    }
+                    //还原字体
+                    function fontZoomNormal(){
+                        fontSize = 17;
+                        setFontSize(fontSize);
+                        return fontSize;
+                    }
+                    /*
+                     <dl>
+                     <dt><a href="#"><img src="images/detail_pic.jpg" width="278"></a></dt>
+                     <dd>Google 免费的在线翻译服务可即时翻译文本和网页</dd>
+                     </dl>
+                     */
+                    var imgHoldTag = "[--IMG_TAG--]";
+                    var imgHoldAltTag = "[--IMG_ALT--]";
+                    var imgHoldIndex = "[--IMG_INDEX--]";
+                    var IMG_TAG = "<dl><dt>"+imgHoldTag+"</dt><dd>"+imgHoldAltTag+"</dd></dl>";
+                    var imgsJSON = "[";
+                    var imgIndex = "0";
+                    /*
+                     //替换图片标签
+                     function replaceIMG(html){
+                     imgsJSON = "[";
+                     var imgs = new Array();
+                     var nimgs = new Array();
+                     var arr;
+                     //          var path = /http([^"]*)/g; //截取图片路径
+                     //          var alt = /alt=([^"]*)/g;
+                     //          var alt = /alt=(["']+)([sS]*?)(1)/i;
+                     //          var imgreg = /<[iI][mM][gG][^>]+src='[^']+'[^>]*>/g; //img标签匹配
+                     var imgurlreg = /http([^"]*)/g; //图片路径
+                     var altreg = /\salt="([^"]+)"/i; //alt匹配
+                     var imgreg = /<[iI][mM][gG][^>]+[^>]*>/g; //img标签匹配
+                     var i = 0;
+                     while(arr = imgreg.exec(html)) {
+                     var imgTag = arr[0]; //获取图片标签
+                     //alert(imgTag);
+                     var imgAlt = imgTag.match(altreg)[1]; //获取图片说明
+                     var imgPath = imgTag.match(imgurlreg)[0]; //获取图片路径
+                     imgsJSON += "{\"img\":\""+imgPath+"\" , \"description\":\""+imgAlt+"\"},"
+                     var nphoto = IMG_TAG.replace(imgHoldTag,imgTag).replace(imgHoldAltTag,imgAlt).replace(imgHoldIndex,imgs.length);
+                     nimgs.push(nphoto);
+                     imgs.push(imgTag);
+                     }
+                     imgsJSON = imgsJSON.substr(0,imgsJSON.length-1);
+                     imgsJSON += "]";
+                     for(i = 0; i < imgs.length; i++){
+                     html = html.replace(imgs[i],nimgs[i]);
+                     }
+                     //            alert(html);
+                     return html;
+                     }
+                     */
+                    //设置图片宽度,调整格式
+                    function imgsFormat(){
+                        var newsContent = document.getElementById("news_content");
+                        var html = newsContent.innerHTML;
+                        imgsJSON = "[";
+                        var imgArray = new Array();
+                        var nimgArray = new Array();
+                        var imgreg = /<[iI][mM][gG][^>]+[^>]*>/g; //img标签匹配
+                        var imgs = document.getElementsByName("jinghua");
+                        //            alert(imgs.length);
+                        for(var i=0;i< imgs.length;i++){
+                            var imgObje = imgs[i];
+                            imgObje.width = 80;
+                            var imgAlt = imgObje.alt; //获取图片说明
+                            var imgPath = imgObje.src; //获取图片路径
+                            var imgTag = imgreg.exec(html)[0]; //获取图片标签
+                            imgsJSON += "{\"img\":\""+imgPath+"\" , \"description\":\""+imgAlt+"\"},"
+                            //              alert(imgsJSON);
+                            var nphoto = IMG_TAG.replace(imgHoldTag,imgTag).replace(imgHoldAltTag,imgAlt).replace(imgHoldIndex,i);
+                            nimgArray.push(nphoto);
+                            imgArray.push(imgTag);
+                        }
+                        imgsJSON = imgsJSON.substr(0,imgsJSON.length-1);
+                        imgsJSON += "]";
+                        for(i = 0; i < imgArray.length; i++){
+                            html = html.replace(imgArray[i],nimgArray[i]);
+                        }
+                        newsContent.innerHTML = html;
+                    }
+                    //设置图片宽度
+                    function imgWith(){
+                        var imgs = document.getElementsByName("jinghua");
+                        for(var i=0;i< imgs.length;i++){
+                            var imgObje = imgs[i];
+                            imgObje.width = 80;
+                            //                var ab = 0;
+                            //                imgObje.onload = function ()
+                            //                {
+                            //                    if(ab > 0){
+                            //                        return;
+                            //                    }
+                            //                    ab++;
+                            //                    imgObje.src = "http://1001.169bb.com/169mm/201008/046/8.jpg"
+                            //                }
+                        }
+                    }
+             randomStyle();
+            window.onload=function(){
+
+
+                var newsContent = document.getElementById("news_content")
+                var bodyWidth=document.body.clientWidth ;
+                newsContent.style.width=(bodyWidth-30)+'px';
+                var article = document.getElementById("article");
+                article.style.width=(bodyWidth-30)+'px';
+                //var imgId=document.getElementById('news_content').firstChild;
+                //imgId.style.width='100%';
+                //imgId.style.height='auto';
+            }
+
+
+
+
+</script>
+</body>
+</html>

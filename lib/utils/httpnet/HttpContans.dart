@@ -12,4 +12,7 @@ class HttpContans {
 
   ///话题咨询
   static final String news = "api/v1/news";
+
+  ///话题咨询
+  static final String newsDetail = "api/v1/news/";
 }
