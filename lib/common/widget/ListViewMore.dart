@@ -4,9 +4,16 @@ typedef LoadData = Future Function(int page, int pageSize);
 typedef ItemView = Widget Function(int index, Object obj);
 
 class ListViewMore extends StatefulWidget {
+  ///每页加载数量
   final int pageSize;
+
+  ///加载回调
   final LoadData loadData;
+
+  ///item渲染
   final ItemView itemView;
+
+  ///是否可以加载更多
   final bool isLoadMore;
 
   ///数据为空时显示，只有第一次加载(或者页数为1)
@@ -62,6 +69,9 @@ class ListViewMoreState extends State {
     if (data != null && data.length > 0) {
       return RefreshIndicator(
           child: ListView.builder(
+
+            ///保持ListView任何情况都能滚动，解决在RefreshIndicator的兼容问题。
+            physics: const AlwaysScrollableScrollPhysics(),
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
               return _listViewMore.itemView(index, data[index]);
@@ -127,9 +137,6 @@ class ListViewMoreState extends State {
 
   @override
   void deactivate() {
-    if (data != null) {
-      data.clear();
-    }
     super.deactivate();
   }
 }

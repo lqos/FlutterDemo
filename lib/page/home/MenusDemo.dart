@@ -28,6 +28,11 @@ class _MenusDemoState extends State<MenusDemo>
   }
 
   @override
+  void deactivate() {
+    super.deactivate();
+  }
+
+  @override
   void dispose() {
     super.dispose();
     print("MyHomePageState dispose");
