@@ -134,7 +134,20 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
     list.forEach((f) {
       content += (f + value);
       value = "";
-      print(f);
+    });
+    return content;
+  }
+
+  toReplace2(String content) {
+    List<String> list = content.split('<img ');
+    content = "";
+    String value = "<img width='100%' height='auto' ";
+    list.forEach((f) {
+      content += (f + value);
+      print(f + value);
+      if (list.indexOf(f) == list.length - 1) {
+        value = '';
+      }
     });
     return content;
   }
@@ -144,7 +157,8 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
     String cssStr = await DefaultAssetBundle.of(context)
         .loadString('images/news_detail.html');
     cssStr = toReplace(cssStr, "#news_title#", bean.title);
-    cssStr = toReplace(cssStr, "#news_content#", bean.content);
+
+    cssStr = toReplace(cssStr, "#news_content#", toReplace2(bean.content));
     cssStr = toReplace(cssStr, "#news_source#", bean.createBy);
     cssStr =
         toReplace(cssStr, "#news_puttime#", readTimestamp(bean.createTime));
@@ -164,7 +178,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
         now.hour.toString() +
         ':' +
         now.minute.toString() +
-        ':';
+        '';
 
     return time;
   }
