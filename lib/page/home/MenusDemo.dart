@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:example01/bean/NewsBean.dart';
 import 'package:example01/common/config/Nav.dart';
@@ -228,11 +229,17 @@ class _MenusDemoState extends State<MenusDemo>
                   ),
                 ),
                 Container(
-                  child: new Image.network(
+                  child: new CachedNetworkImage(
+                    placeholder: new CircularProgressIndicator(),
+                    imageUrl: bean.logo ?? "",
+                    width: imageWidth,
+                    height: imageWidth * 102 / 141,
+                  ) /* new Image.network(
                     bean.logo ?? "",
                     width: imageWidth,
                     height: imageWidth * 102 / 141,
-                  ),
+                  )*/
+                  ,
                 )
               ],
             ),

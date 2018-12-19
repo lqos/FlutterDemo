@@ -4,9 +4,7 @@ import 'package:example01/common/config/Nav.dart';
 import 'package:example01/page/home/LoginPage.dart';
 import 'package:example01/page/home/Page1.dart';
 import 'package:example01/state/GSYState.dart';
-import 'package:example01/utils/AppUtils.dart';
-import 'package:example01/utils/CommontUtils.dart';
-import 'package:example01/utils/DensityUtil.dart';
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -21,13 +19,13 @@ class MyTabState extends State<MyTab>
   @override
   void initState() {
     super.initState();
-    print("MyTabState initState");
+    LoggerUtils.p("MyTabState initState");
   }
 
   @override
   void dispose() {
     super.dispose();
-    print("MyTabState dispose");
+    LoggerUtils.p("MyTabState dispose");
   }
 
   TextStyle getLeftTextStyle() {

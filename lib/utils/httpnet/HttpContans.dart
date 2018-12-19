@@ -15,4 +15,10 @@ class HttpContans {
 
   ///话题咨询
   static final String newsDetail = "api/v1/news/";
+
+  ///检查更新
+  static final String checkVersion =
+      "https://www.pgyer.com/apiv2/app/check?_api_key=c8dcb5514d05960c9369e849e787371e&appKey=";
+//  + "&buildVersion=" + AppUtils.getAppVersionName(context)
+//  + "&buildBuildVersion=" + AppUtils.getAppVersionCode(context));
 }

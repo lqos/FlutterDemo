@@ -1,3 +1,4 @@
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 typedef LoadData = Future Function(int page, int pageSize);
@@ -61,6 +62,7 @@ class ListViewMoreState extends State {
         print('滑动到了最底部');
         toLoadData(curPage + 1);
       }
+      LoggerUtils.p('p = ' + _scrollController.position.pixels.toString());
     });
   }
 
@@ -121,7 +123,7 @@ class ListViewMoreState extends State {
         if (list != null && list.length > 0) {
           this.curPage = page;
           if (list.length < _listViewMore.pageSize) {
-            print("已加载全部数据");
+            LoggerUtils.p("已加载全部数据");
           }
         }
       }
