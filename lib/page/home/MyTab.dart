@@ -29,11 +29,13 @@ class MyTabState extends State<MyTab>
   }
 
   TextStyle getLeftTextStyle() {
-    return new TextStyle(fontSize: 18, color: Color(0xFF333333));
+    return new TextStyle(
+        fontSize: DensityUtil.getwx(context, 15), color: Color(0xFF333333));
   }
 
   TextStyle getRightTextStyle() {
-    return new TextStyle(fontSize: 13, color: Color(0xFF666666));
+    return new TextStyle(
+        fontSize: DensityUtil.getwx(context, 12), color: Color(0xFF666666));
   }
 
   void onclickItem(int ids, String value) {
@@ -116,7 +118,8 @@ class MyTabState extends State<MyTab>
 //                            user.nickName ?? "点击请登录",
                             maxLines: 1,
                             style: new TextStyle(
-                                color: Colors.white, fontSize: 18),
+                                color: Colors.white,
+                                fontSize: DensityUtil.getwx(context, 16)),
                           )
                         ],
                       )),

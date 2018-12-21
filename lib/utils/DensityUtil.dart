@@ -16,11 +16,17 @@ class DensityUtil {
 
   static getwx(context, double value) {
     double w = getSW(context);
-    return value * DW / w;
-  }
+    double h = getSH(context);
 
-  static getwy(context, double value) {
-    double w = getSH(context);
-    return value * DH / w;
+    double ws = w / DW;
+    double hs = h / DH;
+    print(hs.toString() + "<->" + ws.toString());
+    if (ws < hs) {
+      print(value.toString() + "ws" + (value * hs).toString());
+      return value * ws;
+    } else {
+      print(value.toString() + "hs" + (value * hs).toString());
+      return value * hs;
+    }
   }
 }

@@ -30,10 +30,12 @@ class SetState extends State<MySetPage> {
     return new StoreBuilder<GSYState>(builder: (context, store) {
       return new Scaffold(
         appBar: new AppBar(
+          elevation: 0,
           title: new Text("设置"),
           centerTitle: true,
         ),
         body: new Container(
+          alignment: Alignment.bottomCenter,
           padding: new EdgeInsets.all(0),
           child: new Column(
             children: <Widget>[
