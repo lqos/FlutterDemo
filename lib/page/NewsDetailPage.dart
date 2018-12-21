@@ -200,19 +200,24 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WebviewScaffold(
-      url: selectUrl,
-      appBar: AppBar(
-        title: const Text('咨讯详情'),
-        centerTitle: true,
-      ),
-      withZoom: true,
-      withLocalStorage: true,
-      hidden: true,
-      initialChild: Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text('Waiting.....'),
+    return new WillPopScope(
+      onWillPop: () {
+        Navigator.pop(context);
+      },
+      child: WebviewScaffold(
+        url: selectUrl,
+        appBar: AppBar(
+          title: const Text('咨讯详情'),
+          centerTitle: true,
+        ),
+        withZoom: true,
+        withLocalStorage: true,
+        hidden: true,
+        initialChild: Container(
+          color: Colors.white,
+          child: const Center(
+            child: Text('Waiting.....'),
+          ),
         ),
       ),
     );
