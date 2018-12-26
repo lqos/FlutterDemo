@@ -1,4 +1,8 @@
 import 'package:example01/common/CommontItem.dart';
+import 'package:example01/page/demo/Demo2.dart';
+import 'package:example01/page/demo/Demo3.dart';
+import 'package:example01/page/demo/animation/AnimatedLogo.dart';
+import 'package:example01/page/demo/animation/Animation1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -74,10 +78,52 @@ class Page1State extends State<Page1> {
               ),
               new CommonItem(
                 onPressed: (ids, value) {
-                  Navigator.of(context).pushNamed("Demo");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => new Demo2()),
+                  );
                 },
                 leftIcon: new AssetImage("images/ic_mine_setting.png"),
                 leftText: "样例",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
+              ),
+              new CommonItem(
+                onPressed: (ids, value) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => new Animation1()),
+                  );
+                },
+                leftIcon: new AssetImage("images/ic_mine_setting.png"),
+                leftText: "动画1",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
+              ),
+              new CommonItem(
+                onPressed: (ids, value) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => new LogoApp()),
+                  );
+                },
+                leftIcon: new AssetImage("images/ic_mine_setting.png"),
+                leftText: "AnimatedLogo",
+                leftTextStyle: leftTextStyle,
+                rightTextStyle: rightTextStyle,
+                rightText: "",
+              ),
+              new CommonItem(
+                onPressed: (ids, value) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => new Demo3()),
+                  );
+                },
+                leftIcon: new AssetImage("images/ic_mine_setting.png"),
+                leftText: "样例2",
                 leftTextStyle: leftTextStyle,
                 rightTextStyle: rightTextStyle,
                 rightText: "",
@@ -158,7 +204,6 @@ class ShareTextWithTopIcon extends StatelessWidget {
       lefticon = new Icon(iconData, color: Color(0xff666666));
     }
 
-    // TODO: implement build
     return new Container(
         child: new Column(
       children: <Widget>[

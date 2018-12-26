@@ -45,7 +45,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
 
   final _urlCtrl = TextEditingController(text: "");
 
-  final _codeCtrl = TextEditingController(text: 'window.navigator.userAgent');
+  //final _codeCtrl = TextEditingController(text: 'window.navigator.userAgent');
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 

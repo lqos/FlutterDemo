@@ -130,7 +130,6 @@ class TextWithRightIcon extends StatelessWidget {
       lefticon = new Icon(iconData, color: Color(0xff666666));
     }
 
-    // TODO: implement build
     return new Container(
         child: new Row(
           children: <Widget>[

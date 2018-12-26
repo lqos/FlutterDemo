@@ -40,8 +40,7 @@ class UserInfoPageState extends State<UserInfoPage> {
 
     return Scaffold(
       appBar: new AppBar(
-        title: new Text("个人资料"),
-        centerTitle: true,
+        title: new Text("个人资料"), 
       ),
       body: new Column(
         children: <Widget>[
