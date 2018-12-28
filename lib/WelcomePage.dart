@@ -2,6 +2,7 @@ import 'package:example01/common/config/Nav.dart';
 import 'package:example01/page/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/state/GSYStyle.dart';
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -39,9 +40,9 @@ class _WelcomePage extends State<WelcomePage> {
     Store<GSYState> store = StoreProvider.of(context);
     UserDao.initUserInfo(store).then((user) {
       if (user == null) {
-        print("初始化完成");
+        LoggerUtils.p("初始化完成");
       } else {
-        print("wei初始化完成");
+        LoggerUtils.p("wei初始化完成");
       }
 //      Navigator.of(context).pop();
 

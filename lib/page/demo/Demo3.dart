@@ -1,3 +1,4 @@
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class Demo3 extends StatefulWidget {
@@ -23,7 +24,7 @@ class Demo3State extends State<Demo3> with TickerProviderStateMixin {
     c2 = Color.fromARGB(255, 255, 255, 255);
     controller = new ScrollController();
     controller.addListener(() {
-      print(controller.position.pixels);
+      LoggerUtils.p(controller.position.pixels);
       double x = height / 2;
       if (controller.position.pixels < x) {
         top = true;
@@ -127,7 +128,7 @@ class Demo3State extends State<Demo3> with TickerProviderStateMixin {
         SliverFixedExtentList(
           itemExtent: 50.0,
           delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
+                (BuildContext context, int index) {
               return Container(
                 alignment: Alignment.center,
                 color: Colors.lightBlue[100 * (index % 9)],

@@ -20,12 +20,9 @@ class DensityUtil {
 
     double ws = w / DW;
     double hs = h / DH;
-    print(hs.toString() + "<->" + ws.toString());
     if (ws < hs) {
-      print(value.toString() + "ws" + (value * hs).toString());
       return value * ws;
     } else {
-      print(value.toString() + "hs" + (value * hs).toString());
       return value * hs;
     }
   }

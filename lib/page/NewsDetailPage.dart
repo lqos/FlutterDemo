@@ -3,9 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:example01/bean/NewsBean.dart';
-import 'package:example01/utils/FileUtils.dart';
-import 'package:example01/utils/httpnet/Http.dart';
-import 'package:example01/utils/httpnet/HttpContans.dart';
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
@@ -144,7 +142,7 @@ class _NewsDetailPageState extends State<NewsDetailPage> {
     String value = "<img width='100%' height='auto' ";
     list.forEach((f) {
       content += (f + value);
-      print(f + value);
+      LoggerUtils.p(f + value);
       if (list.indexOf(f) == list.length - 1) {
         value = '';
       }

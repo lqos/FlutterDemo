@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:example01/common/CommontItem.dart';
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -94,9 +95,9 @@ class DemoState extends State<Demo> {
   get() async {
     Dio dio = new Dio();
     dio.get("http://www.baidu.com").then((obj) {
-      print(obj.data);
+      LoggerUtils.p(obj.data);
     }, onError: (e) {
-      print(e);
+      LoggerUtils.p(e);
     });
   }
 

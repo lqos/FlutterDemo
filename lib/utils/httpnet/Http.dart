@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:example01/common/config/config.dart';
-import 'package:example01/utils/httpnet/HttpContans.dart';
+import 'package:example01/utils/utils.dart';
 
 class Http {
   static Http _http;
@@ -95,13 +95,13 @@ class Http {
     var startTime = new DateTime.now().millisecond;
     var mUrl = options.baseUrl + options.path;
     if (Config.DEBUG) {
-      print(
+      LoggerUtils.p(
           '********************************************************************');
-      print('请求方式:' + options.method + '\n请求地址:$mUrl');
-      print('请求参数:' + options.data.toString());
+      LoggerUtils.p('请求方式:' + options.method + '\n请求地址:$mUrl');
+      LoggerUtils.p('请求参数:' + options.data.toString());
       var headers = options.headers.toString();
-      print('请求headers:$headers');
-      print(
+      LoggerUtils.p('请求headers:$headers');
+      LoggerUtils.p(
           '********************************************************************');
     }
     Response response;
@@ -111,12 +111,12 @@ class Http {
 
       if (Config.DEBUG) {
         var time = (new DateTime.now().millisecond - startTime).toString();
-        print(
+        LoggerUtils.p(
             '********************************************************************');
-        print('请求方式:' + options.method + '\n请求地址:$mUrl($time)');
-        print('请求结果CODE:' + response.statusCode.toString());
-        print('请求结果:' + response.data.toString());
-        print(
+        LoggerUtils.p('请求方式:' + options.method + '\n请求地址:$mUrl($time)');
+        LoggerUtils.p('请求结果CODE:' + response.statusCode.toString());
+        LoggerUtils.p('请求结果:' + response.data.toString());
+        LoggerUtils.p(
             '********************************************************************');
       }
       return response;
@@ -124,8 +124,8 @@ class Http {
       response = e.response;
       if (Config.DEBUG) {
         var time = (new DateTime.now().millisecond - startTime).toString();
-        print('请求异常: ' + e.toString());
-        print('请求异常url:$mUrl($time)');
+        LoggerUtils.p('请求异常: ' + e.toString());
+        LoggerUtils.p('请求异常url:$mUrl($time)');
       }
       return response;
     }

@@ -59,7 +59,7 @@ class ListViewMoreState extends State {
       if (isLoadMore &&
           _scrollController.position.pixels ==
               _scrollController.position.maxScrollExtent) {
-        print('滑动到了最底部');
+        LoggerUtils.p('滑动到了最底部');
         toLoadData(curPage + 1);
       }
       LoggerUtils.p('p = ' + _scrollController.position.pixels.toString());

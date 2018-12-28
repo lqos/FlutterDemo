@@ -28,7 +28,7 @@ class MyHomePageState extends State<MyHomePage>
     c2 = Color.fromARGB(255, 255, 255, 255);
     controller = new ScrollController();
     controller.addListener(() {
-      print(controller.position.pixels);
+      LoggerUtils.p(controller.position.pixels);
       double x = height / 2;
       if (controller.position.pixels < x) {
         top = true;

@@ -2,6 +2,6 @@
 
 class LoggerUtils {
   static p(Object object) {
-    print(object);
+    if (false) print(object);
   }
 }

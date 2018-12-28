@@ -3,8 +3,7 @@ import 'package:example01/bean/DataResult.dart';
 import 'package:example01/bean/User.dart';
 import 'package:example01/page/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
-import 'package:example01/utils/CommontUtils.dart';
-import 'package:example01/utils/RegUtils.dart';
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -112,7 +111,7 @@ class LoginPageState extends State<LoginPage> {
     if (dataResult.result) {
       Navigator.pop(context);
     } else {
-      print(dataResult.message);
+      LoggerUtils.p(dataResult.message);
     }
   }
 

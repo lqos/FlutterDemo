@@ -34,8 +34,3 @@ android {
         disable 'InvalidPackage'
     }
 }
-
-dependencies {
-    //    implementation 'com.android.support:support-v4:27.1.1'
-    //implementation files('lib/flutter.jar')
-}

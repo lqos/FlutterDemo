@@ -1,3 +1,4 @@
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class Animation1 extends StatefulWidget {
@@ -18,7 +19,7 @@ class _AnimationApp extends State<Animation1>
     animation = new Tween(begin: 0.0, end: 300.0).animate(controller)
       ..addListener(() {
         setState(() {
-          print(animation.value);
+          LoggerUtils.p(animation.value);
           // the state that has changed here is the animation object’s value
         });
       });

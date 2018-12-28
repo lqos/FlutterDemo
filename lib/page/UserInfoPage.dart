@@ -5,11 +5,7 @@ import 'package:example01/bean/User.dart';
 import 'package:example01/common/widget/LineView.dart';
 import 'package:example01/page/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
-import 'package:example01/utils/AppUtils.dart';
-import 'package:example01/utils/CommontUtils.dart';
-import 'package:example01/utils/DensityUtil.dart';
-import 'package:example01/utils/httpnet/Http.dart';
-import 'package:example01/utils/httpnet/HttpContans.dart';
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:image_picker/image_picker.dart';
@@ -144,7 +140,7 @@ class UserInfoPageState extends State<UserInfoPage> {
         user.portrait = response.data['image'];
         Store<GSYState> store = StoreProvider.of(context);
         UserDao.saveUserInfo(user, store);
-        print(json.encode(user));
+        LoggerUtils.p(json.encode(user));
         setState(() {});
       }
     }

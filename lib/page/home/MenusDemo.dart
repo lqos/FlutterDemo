@@ -6,10 +6,10 @@ import 'package:example01/common/config/config.dart';
 import 'package:example01/common/widget/LineView.dart';
 import 'package:example01/common/widget/ListViewMore.dart';
 import 'package:example01/utils/AppUtils.dart';
-import 'package:example01/utils/DensityUtil.dart';
 import 'package:example01/utils/PreferencesUtils.dart';
 import 'package:example01/utils/httpnet/Http.dart';
 import 'package:example01/utils/httpnet/HttpContans.dart';
+import 'package:example01/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +25,7 @@ class _MenusDemoState extends State<MenusDemo>
   @override
   void initState() {
     super.initState();
-    print("MyHomePageState initState");
+    LoggerUtils.p("MyHomePageState initState");
   }
 
   @override
@@ -36,7 +36,7 @@ class _MenusDemoState extends State<MenusDemo>
   @override
   void dispose() {
     super.dispose();
-    print("MyHomePageState dispose");
+    LoggerUtils.p("MyHomePageState dispose");
   }
 
   @override
@@ -73,8 +73,8 @@ class _MenusDemoState extends State<MenusDemo>
     Response res = await Http.getInstance().get(HttpContans.news, map);
     List<NewsBean> data = [];
     if (res != null && res.data != null) {
-      print(res.data['code']);
-      print(res.data['message']);
+      LoggerUtils.p(res.data['code']);
+      LoggerUtils.p(res.data['message']);
       var resulte = res.data['data'];
       if (resulte != null) {
         resulte.forEach((v) {

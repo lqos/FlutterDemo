@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:example01/utils/utils.dart';
 import 'package:path_provider/path_provider.dart';
 
 class FileUtils {
@@ -9,9 +10,9 @@ class FileUtils {
       Directory sw = await getApplicationDocumentsDirectory();
       Directory st = await getTemporaryDirectory();
 
-      print("sd = " + sd.path);
-      print("sw = " + sw.path);
-      print("st = " + st.path);
+      LoggerUtils.p("sd = " + sd.path);
+      LoggerUtils.p("sw = " + sw.path);
+      LoggerUtils.p("st = " + st.path);
 //      Directory df = await Directory.systemTemp.createTemp("temp");
 //      print("systemTemp ---> " + df.path);
 //
@@ -29,8 +30,8 @@ class FileUtils {
     Directory sf = await sw.createTemp("temp.html");
     File file = File(sw.path + "/news_temps.html");
     file.create();
-    print("sf = " + sf.path);
-    print("file = " + file.path);
+    LoggerUtils.p("sf = " + sf.path);
+    LoggerUtils.p("file = " + file.path);
 
     file = await file.writeAsString(cssStr);
     return file;
@@ -40,7 +41,7 @@ class FileUtils {
     File file = File(filePath);
     file.create();
 
-    print("file = " + file.path);
+    LoggerUtils.p("file = " + file.path);
 
     file = await file.writeAsString(byteData);
     return file.path;
