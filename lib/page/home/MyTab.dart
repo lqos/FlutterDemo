@@ -84,7 +84,7 @@ class MyTabState extends State<MyTab>
     return new StoreBuilder<GSYState>(builder: (context, store) {
       User user = store.state.userInfo;
       return new Scaffold(
-        body: new Expanded(
+        body: new SingleChildScrollView(
           child: new Column(
             children: <Widget>[
               new Container(
