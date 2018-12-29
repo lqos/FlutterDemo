@@ -1,5 +1,4 @@
 import 'package:example01/page/demo/MyHomePage.dart';
-import 'package:example01/page/home/HomePage2.dart';
 import 'package:example01/page/home/MenusDemo.dart';
 import 'package:example01/page/home/MyTab.dart';
 import 'package:example01/utils/utils.dart';
@@ -17,12 +16,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int _tabIndex = 0;
-  var _bodys = [
-    new HomePage2(),
-    new MyHomePage(),
-    new MenusDemo(),
-    new MyTab()
-  ];
+  var _bodys = [new MyHomePage(), new MenusDemo(), new MyTab()];
 
   @override
   void initState() {
@@ -33,8 +27,6 @@ class HomePageState extends State<HomePage> {
     if (index == 0) {
       return new Icon(Icons.home);
     } else if (index == 1) {
-      return new Icon(Icons.home);
-    } else if (index == 2) {
       return new Icon(Icons.nature);
     } else {
       return new Icon(Icons.face);
@@ -45,10 +37,6 @@ class HomePageState extends State<HomePage> {
     if (index == 0) {
       return new Icon(Icons.home, color: Theme.of(context).accentColor);
     } else if (index == 1) {
-      return new Icon(Icons.home, color: Theme
-          .of(context)
-          .accentColor);
-    } else if (index == 2) {
       return new Icon(Icons.nature, color: Theme.of(context).accentColor);
     } else {
       return new Icon(Icons.face, color: Theme.of(context).accentColor);
@@ -57,10 +45,8 @@ class HomePageState extends State<HomePage> {
 
   getTabText(int index) {
     if (index == 0) {
-      return "首页1";
-    } else if (index == 1) {
       return "首页";
-    } else if (index == 2) {
+    } else if (index == 1) {
       return "发现";
     } else {
       return "我的";
@@ -89,18 +75,14 @@ class HomePageState extends State<HomePage> {
             new BottomNavigationBarItem(
                 icon: getIcon(0),
                 activeIcon: getActiveIcon(0),
-                title: new Text("首页1")),
+                title: new Text("首页")),
             new BottomNavigationBarItem(
                 icon: getIcon(1),
                 activeIcon: getActiveIcon(1),
-                title: new Text("首页")),
+                title: new Text("发现")),
             new BottomNavigationBarItem(
                 icon: getIcon(2),
                 activeIcon: getActiveIcon(2),
-                title: new Text("发现")),
-            new BottomNavigationBarItem(
-                icon: getIcon(3),
-                activeIcon: getActiveIcon(3),
                 title: new Text("我的")),
           ],
           //设置显示的模式

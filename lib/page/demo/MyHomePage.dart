@@ -157,9 +157,7 @@ class MyHomePageState extends State<MyHomePage>
     return Container(
       color: Colors.white,
       child: new TabBar(
-        onTap: (index) {
-          LoggerUtils.p(index.toString());
-        },
+
         tabs: <Widget>[
           new Tab(
             icon: new Icon(Icons.directions_bike,
@@ -263,10 +261,8 @@ class _SliverChildDelegate extends SliverChildDelegate {
   final double maxHeight;
   final Widget child;
 
-  @override
   double get minExtent => minHeight;
 
-  @override
   double get maxExtent => maxHeight;
 
   @override
