@@ -1,4 +1,4 @@
-import 'package:example01/bean/User.dart';
+import 'package:example01/data/User.dart';
 import 'package:redux/redux.dart';
 
 /*

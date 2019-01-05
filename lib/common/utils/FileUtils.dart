@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:example01/utils/utils.dart';
+import 'package:example01/common/utils/utils.dart';
 import 'package:path_provider/path_provider.dart';
 
 class FileUtils {

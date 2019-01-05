@@ -1,13 +1,12 @@
 //登录界面
-import 'package:example01/bean/DataResult.dart';
-import 'package:example01/bean/User.dart';
-import 'package:example01/page/dao/UserDao.dart';
+import 'package:example01/common/utils/utils.dart';
+import 'package:example01/data/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
-import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
+///登录界面
 class LoginPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -93,7 +92,7 @@ class LoginPageState extends State<LoginPage> {
     });
   }
 
-  toLogin(Store<GSYState> store) async {
+  toLogin(Store<GSYState> store) {
     //账号
     String account = phoneController.text.toString();
     if (!isInvalidMobile(account)) {
@@ -106,13 +105,14 @@ class LoginPageState extends State<LoginPage> {
     }
     CommontUtils.showLoadingDialog(context);
     var data = {"accountName": account, "password": password};
-    DataResult<User> dataResult = await UserDao.toLogin(store, data);
-    Navigator.pop(context);
-    if (dataResult.result) {
+    UserDao.toLogin(store, data).then((data) {
       Navigator.pop(context);
-    } else {
-      LoggerUtils.p(dataResult.message);
-    }
+      if (data.result) {
+        Navigator.pop(context);
+      } else {
+        LoggerUtils.p(data.message);
+      }
+    });
   }
 
   showTipDialog(String message) {

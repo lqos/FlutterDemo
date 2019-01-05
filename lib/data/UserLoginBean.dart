@@ -1,3 +1,4 @@
+///用户登录 实体
 class UserLoginBean {
   int code;
   String message;

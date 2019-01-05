@@ -23,7 +23,6 @@ dependencies:
 #  sqflite: ^0.12.2+1
   path_provider: ^0.4.1
   flutter_redux: ^0.5.2  #全局状态管理机
-  json_annotation: ^2.0.0
   flutter_webview_plugin: ^0.3.0+2
   cached_network_image: ^0.5.1
   image_picker:

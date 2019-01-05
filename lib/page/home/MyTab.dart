@@ -1,14 +1,15 @@
-import 'package:example01/bean/User.dart';
 import 'package:example01/common/CommontItem.dart';
 import 'package:example01/common/config/Nav.dart';
+import 'package:example01/common/utils/utils.dart';
+import 'package:example01/data/User.dart';
 import 'package:example01/page/home/LoginPage.dart';
 import 'package:example01/page/home/Page1.dart';
 import 'package:example01/state/GSYState.dart';
-import 'package:example01/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
+///我的
 class MyTab extends StatefulWidget {
   @override
   MyTabState createState() => new MyTabState();

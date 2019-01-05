@@ -1,4 +1,4 @@
-import 'package:example01/bean/User.dart';
+import 'package:example01/data/User.dart';
 import 'package:example01/state/ThemeRedux.dart';
 import 'package:example01/state/UserRedux.dart';
 import 'package:flutter/material.dart';

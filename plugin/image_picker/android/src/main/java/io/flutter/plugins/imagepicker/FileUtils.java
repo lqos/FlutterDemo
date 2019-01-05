@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  * This file was modified by the Flutter authors from the following original file:
- * https://raw.githubusercontent.com/iPaulPro/aFileChooser/master/aFileChooser/src/com/ipaulpro/afilechooser/utils/FileUtils.java
+ * https://raw.githubusercontent.com/iPaulPro/aFileChooser/master/aFileChooser/src/com/ipaulpro/afilechooser/common/utils/FileUtils.java
  */
 
 package io.flutter.plugins.imagepicker;

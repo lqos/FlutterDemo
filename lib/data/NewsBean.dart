@@ -1,3 +1,4 @@
+///咨询数据实体
 class NewsBean {
   int classify;
   int collectionCount;
@@ -18,25 +19,24 @@ class NewsBean {
   int type;
   int views;
 
-  NewsBean(
-      {this.classify,
-      this.collectionCount,
-      this.commentCount,
-      this.content,
-      this.createBy,
-      this.createTime,
-      this.desp,
-      this.goodCount,
-      this.id,
-      this.isCollection,
-      this.isGood,
-      this.logo,
-      this.sort,
-      this.status,
-      this.tag,
-      this.title,
-      this.type,
-      this.views});
+  NewsBean({this.classify,
+    this.collectionCount,
+    this.commentCount,
+    this.content,
+    this.createBy,
+    this.createTime,
+    this.desp,
+    this.goodCount,
+    this.id,
+    this.isCollection,
+    this.isGood,
+    this.logo,
+    this.sort,
+    this.status,
+    this.tag,
+    this.title,
+    this.type,
+    this.views});
 
   NewsBean.fromJson(Map<String, dynamic> json) {
     classify = json['classify'];

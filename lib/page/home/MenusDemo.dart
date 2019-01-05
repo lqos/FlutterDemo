@@ -1,18 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
-import 'package:example01/bean/NewsBean.dart';
 import 'package:example01/common/config/Nav.dart';
 import 'package:example01/common/config/config.dart';
+import 'package:example01/common/utils/AppUtils.dart';
+import 'package:example01/common/utils/PreferencesUtils.dart';
+import 'package:example01/common/utils/httpnet/Http.dart';
+import 'package:example01/common/utils/httpnet/HttpContans.dart';
+import 'package:example01/common/utils/utils.dart';
 import 'package:example01/common/widget/LineView.dart';
 import 'package:example01/common/widget/ListViewMore.dart';
-import 'package:example01/utils/AppUtils.dart';
-import 'package:example01/utils/PreferencesUtils.dart';
-import 'package:example01/utils/httpnet/Http.dart';
-import 'package:example01/utils/httpnet/HttpContans.dart';
-import 'package:example01/utils/utils.dart';
+import 'package:example01/data/NewsBean.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+///发现
 class MenusDemo extends StatefulWidget {
   @override
   _MenusDemoState createState() {

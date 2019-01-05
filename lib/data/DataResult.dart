@@ -1,6 +1,12 @@
+///数据封装
 class DataResult<T> {
+  ///是否成功
   bool result;
+
+  ///数据存放
   T data;
+
+  ///信息
   String message;
 
   static create<VH>(bool result, {VH data, String message}) {

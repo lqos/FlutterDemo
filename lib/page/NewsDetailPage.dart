@@ -2,11 +2,12 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:example01/bean/NewsBean.dart';
-import 'package:example01/utils/utils.dart';
+import 'package:example01/common/utils/utils.dart';
+import 'package:example01/data/NewsBean.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
+///咨询详情页
 class NewsDetailPage extends StatefulWidget {
   final String ids;
 

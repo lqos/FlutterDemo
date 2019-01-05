@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:example01/bean/DataResult.dart';
-import 'package:example01/bean/User.dart';
 import 'package:example01/common/config/config.dart';
+import 'package:example01/common/utils/PreferencesUtils.dart';
+import 'package:example01/common/utils/httpnet/Http.dart';
+import 'package:example01/common/utils/httpnet/HttpContans.dart';
+import 'package:example01/data//DataResult.dart';
+import 'package:example01/data/User.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/state/UserRedux.dart';
-import 'package:example01/utils/PreferencesUtils.dart';
-import 'package:example01/utils/httpnet/Http.dart';
-import 'package:example01/utils/httpnet/HttpContans.dart';
 import 'package:redux/redux.dart';
 
 class UserDao {

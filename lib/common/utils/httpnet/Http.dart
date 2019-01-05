@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:example01/common/config/config.dart';
-import 'package:example01/utils/utils.dart';
+import 'package:example01/common/utils/utils.dart';
 
 class Http {
   static Http _http;

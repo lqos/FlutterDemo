@@ -1,4 +1,4 @@
-import 'package:example01/utils/DensityUtil.dart';
+import 'package:example01/common/utils/DensityUtil.dart';
 import 'package:flutter/material.dart';
 
 class CommontUtils {

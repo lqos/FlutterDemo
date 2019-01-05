@@ -1,12 +1,13 @@
 import 'package:example01/common/config/Nav.dart';
-import 'package:example01/page/dao/UserDao.dart';
+import 'package:example01/common/utils/utils.dart';
+import 'package:example01/data/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/state/GSYStyle.dart';
-import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
+///欢迎界面
 class WelcomePage extends StatefulWidget {
   static var sName = "welcome";
 
@@ -45,9 +46,7 @@ class _WelcomePage extends State<WelcomePage> {
         LoggerUtils.p("wei初始化完成");
       }
 //      Navigator.of(context).pop();
-
     }).then((user) {
-
       Nav.goHome(context);
     });
   }

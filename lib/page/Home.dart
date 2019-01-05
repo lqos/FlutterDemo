@@ -1,10 +1,11 @@
-import 'package:example01/page/demo/MyHomePage.dart';
+import 'package:example01/common/utils/utils.dart';
 import 'package:example01/page/home/MenusDemo.dart';
 import 'package:example01/page/home/MyTab.dart';
-import 'package:example01/utils/utils.dart';
+import 'package:example01/page/home/TestPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+///程序主页
 class HomePage extends StatefulWidget {
   static const sName = "HomePage";
 
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int _tabIndex = 0;
-  var _bodys = [new MyHomePage(), new MenusDemo(), new MyTab()];
+  var _bodys = [TestPage(), MenusDemo(), MyTab()];
 
   @override
   void initState() {

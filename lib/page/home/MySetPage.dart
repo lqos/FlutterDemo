@@ -1,12 +1,12 @@
-import 'package:example01/bean/User.dart';
 import 'package:example01/common/CommontItem.dart';
-import 'package:example01/page/dao/UserDao.dart';
+import 'package:example01/data/User.dart';
+import 'package:example01/data/dao/UserDao.dart';
 import 'package:example01/state/GSYState.dart';
 import 'package:example01/state/UserRedux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
-//设置界面
+///设置界面
 class MySetPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

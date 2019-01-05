@@ -1,6 +1,6 @@
+import 'package:example01/page/Home.dart';
 import 'package:example01/page/NewsDetailPage.dart';
 import 'package:example01/page/UserInfoPage.dart';
-import 'package:example01/page/demo/Home.dart';
 import 'package:example01/page/home/MySetPage.dart';
 import 'package:flutter/material.dart';
 

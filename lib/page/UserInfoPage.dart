@@ -1,16 +1,17 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:example01/bean/User.dart';
+import 'package:example01/common/utils/utils.dart';
 import 'package:example01/common/widget/LineView.dart';
-import 'package:example01/page/dao/UserDao.dart';
+import 'package:example01/data//dao/UserDao.dart';
+import 'package:example01/data/User.dart';
 import 'package:example01/state/GSYState.dart';
-import 'package:example01/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:redux/redux.dart';
 
+///用户资料界面
 class UserInfoPage extends StatefulWidget {
   @override
   UserInfoPageState createState() => UserInfoPageState();
@@ -36,7 +37,7 @@ class UserInfoPageState extends State<UserInfoPage> {
 
     return Scaffold(
       appBar: new AppBar(
-        title: new Text("个人资料"), 
+        title: new Text("个人资料"),
       ),
       body: new Column(
         children: <Widget>[

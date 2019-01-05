@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:example01/common/CommontItem.dart';
-import 'package:example01/utils/utils.dart';
+import 'package:example01/common/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
