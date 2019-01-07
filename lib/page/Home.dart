@@ -1,7 +1,7 @@
 import 'package:example01/common/utils/utils.dart';
+import 'package:example01/page/home/FinTabPage.dart';
 import 'package:example01/page/home/MenusDemo.dart';
 import 'package:example01/page/home/MyTab.dart';
-import 'package:example01/page/home/TestPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   int _tabIndex = 0;
-  var _bodys = [TestPage(), MenusDemo(), MyTab()];
+  var _bodys = [MenusDemo(), FindTab(), MyTab()];
 
   @override
   void initState() {
